@@ -16,7 +16,7 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+        setTheme(R.style.Theme_Sejiwaku)
         setContent {
             SejiwakuTheme {
                 // A surface container using the 'background' color from the theme
