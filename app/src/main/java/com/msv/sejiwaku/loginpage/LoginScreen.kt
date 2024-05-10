@@ -23,6 +23,8 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Send
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -61,19 +63,21 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 @Composable
 fun LoginPage() {
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
     ) {
 
-        var newTextValue by remember {
+        var emaillogin by remember {
             mutableStateOf("")
         }
-        var password by rememberSaveable {
+        var passwordlogin by rememberSaveable {
             mutableStateOf("")
         }
-        var passwordVisibility by remember {
+        var passwordVisibilitylogin by remember {
             mutableStateOf(false)
         }
-        var icon = if(passwordVisibility)
+        var icon = if(passwordVisibilitylogin)
             painterResource(id = R.drawable.on_eye)
         else
             painterResource(id = R.drawable.off_eye)
@@ -94,54 +98,56 @@ fun LoginPage() {
         }
         Column(
             modifier = Modifier
-                .padding(top = 24.dp, start = 39.dp)
+                .padding(top = 24.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = "Log In", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            Text(text = "Log In", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
             Spacer(modifier = Modifier.size(26.dp))
-            OutlinedTextField(
-                value = newTextValue, onValueChange = {
-                    newTextValue = it
-                },
-                label = { Text(text = "EMAIL", fontWeight = FontWeight.Bold) },
-                //maxLines = 2
-                singleLine = true,
-                modifier = Modifier.width(295.dp),
-                placeholder = {
-                    Text(text = "test@email.com")
-                },
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                OutlinedTextField(
+                    value = emaillogin, onValueChange = {
+                        emaillogin = it
+                    },
+                    label = { Text(text = "EMAIL", fontWeight = FontWeight.Bold) },
+                    //maxLines = 2
+                    singleLine = true,
+                    modifier = Modifier.width(295.dp),
+                    placeholder = {
+                        Text(text = "smantha@mail.com")
+                    },
 
+                    )
+                Spacer(modifier = Modifier.size(26.dp))
+                OutlinedTextField(
+                    value = passwordlogin,
+                    onValueChange = {
+                        passwordlogin = it
+                    },
+                    modifier = Modifier.width(295.dp),
+                    label = {
+                        Text(text = "KATA SANDI", fontWeight = FontWeight.Bold)
+                    },
+                    trailingIcon = {
+                        IconButton(onClick = {
+                            passwordVisibilitylogin = !passwordVisibilitylogin
+                        }) {
+                            Icon(
+                                painter = icon,
+                                contentDescription = "Logo mata on",
+                                Modifier.size(30.dp)
+                            )
+                        }
+                    },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Password
+                    ),
+                    visualTransformation = if(passwordVisibilitylogin) VisualTransformation.None
+                    else PasswordVisualTransformation()
                 )
-            Spacer(modifier = Modifier.size(26.dp))
-            OutlinedTextField(
-                value = password,
-                onValueChange = {
-                    password = it
-                },
-                placeholder = {
-                    Text(text = "KATA SANDI", fontWeight = FontWeight.Bold)
-                },
-                modifier = Modifier.width(295.dp),
-                label = {
-                    Text(text = "KATA SANDI", fontWeight = FontWeight.Bold)
-                },
-                trailingIcon = {
-                    IconButton(onClick = {
-                        passwordVisibility = !passwordVisibility
-                    }) {
-                        Icon(
-                            painter = icon,
-                            contentDescription = "Logo mata on",
-                            Modifier.size(30.dp)
-                        )
-                    }
-                },
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Password
-                ),
-                visualTransformation = if(passwordVisibility) VisualTransformation.None
-                else PasswordVisualTransformation()
-            )
+            }
 
         }
         Column(
@@ -160,14 +166,23 @@ fun LoginPage() {
             }
         }
         Column(
-            modifier = Modifier.padding(top = 14.dp, start = 37.dp),
-            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .padding(top = 14.dp,)
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
                 onClick = { /*TODO*/ },
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(
+                        red = 0.2f,
+                        green = 0.725f,
+                        blue = 0.675f,
+                        alpha = 1.0f
+                    ),
+                )
             ) {
                 Text(text = "Login")
             }
@@ -175,7 +190,7 @@ fun LoginPage() {
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(top = 70.dp)
+                .padding(top = 20.dp)
         ) {
             Box(
                 Modifier.padding(10.dp),
@@ -219,7 +234,15 @@ fun LoginPage() {
         ) {
             Text(text = "Don’t have an account?")
             TextButton(onClick = { /*TODO*/ }) {
-                Text(text = "Register")
+                Text(
+                    text = "Register",
+                    color = Color(
+                        red = 0.2f,
+                        green = 0.725f,
+                        blue = 0.675f,
+                        alpha = 1.0f
+                    ),
+                )
             }
         }
     }
