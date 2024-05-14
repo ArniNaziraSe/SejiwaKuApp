@@ -5,3 +5,6 @@ https://www.figma.com/file/xFfPiYQedUmVfFzHhzsD4z/Lo---Fi-%26-Hi---Fi?type=desig
 
 website pembuat image format xml powerfull
 https://picsvg.com/
+
+android minimal requirement :
+Android 7
