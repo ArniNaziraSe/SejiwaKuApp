@@ -97,7 +97,7 @@ fun RegisterPage() {
         }
         Column(
             modifier = Modifier
-                .padding(top = 6.dp )
+                .padding(top = 6.dp)
                 .fillMaxWidth()
         ) {
             Text(text = "Register", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
@@ -217,7 +217,7 @@ fun RegisterPage() {
                     Text(text = "Don’t have an account?")
                     TextButton(onClick = { /*TODO*/ }) {
                         Text(
-                            text = "Register",
+                            text = "Login",
                             color = Color(
                                 red = 0.2f,
                                 green = 0.725f,

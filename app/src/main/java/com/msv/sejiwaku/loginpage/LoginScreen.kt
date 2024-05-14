@@ -33,6 +33,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,11 +62,12 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginPage() {
+fun LoginPage(
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+
     ) {
 
         var emaillogin by remember {
@@ -81,7 +83,6 @@ fun LoginPage() {
             painterResource(id = R.drawable.on_eye)
         else
             painterResource(id = R.drawable.off_eye)
-
 
 
         Column(
@@ -190,16 +191,21 @@ fun LoginPage() {
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(top = 20.dp)
-        ) {
-            Box(
-                Modifier.padding(10.dp),
-                contentAlignment = Alignment.Center
+                .padding(top = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Divider(color = Color(red = 0.745f, green = 0.773f, blue = 0.824f, alpha = 1.0f), thickness = 1.dp)
+            Row(
+                Modifier.padding(10.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Divider(color = Color(red = 0.745f, green = 0.773f, blue = 0.824f, alpha = 1.0f), thickness = 1.dp, modifier = Modifier.size(width = 150.dp, height = 1.dp))
+                Spacer(modifier = Modifier.size(2.dp))
                 Text(text = "   Or", modifier = Modifier
-                    .background(Color.White)
-                    .size(width = 40.dp, height = 20.dp))
+                    .size(width = 40.dp, height = 20.dp)
+                )
+                Spacer(modifier = Modifier.size(2.dp))
+                Divider(color = Color(red = 0.745f, green = 0.773f, blue = 0.824f, alpha = 1.0f), thickness = 1.dp, modifier = Modifier.size(width = 150.dp, height = 1.dp))
             }
         }
         Row(
@@ -254,7 +260,6 @@ fun LoginPage() {
 @Composable
 private fun PreviewLoginPage() {
     SejiwakuTheme {
-
         LoginPage()
     }
 }
