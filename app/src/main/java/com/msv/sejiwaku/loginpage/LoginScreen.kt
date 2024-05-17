@@ -69,7 +69,6 @@ fun LoginPage(
             .fillMaxSize()
 
     ) {
-
         var emaillogin by remember {
             mutableStateOf("")
         }
