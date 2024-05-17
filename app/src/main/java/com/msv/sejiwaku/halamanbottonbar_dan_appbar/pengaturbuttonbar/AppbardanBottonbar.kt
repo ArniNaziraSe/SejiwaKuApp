@@ -48,7 +48,9 @@ import com.msv.sejiwaku.bagianhalamandibuttonbar.Example1
 import com.msv.sejiwaku.bagianhalamandibuttonbar.Example2
 import com.msv.sejiwaku.bagianhalamandibuttonbar.Example3
 import com.msv.sejiwaku.bagianhalamandibuttonbar.Example4
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanBottonbar
 
 /*NavHost(
 navController = navController,
@@ -101,24 +103,10 @@ fun AppbardanBottonbar(
 //        }
         // dibawah tempat isinya
     ) {contentPadding ->
-        NavHost(
+        HalamanBottonbar(
             navController = navController,
-            startDestination = Halaman.Home.route,
-            modifier = Modifier.padding(contentPadding)
-        ) {
-            composable(Halaman.Home.route) {
-                Example1()
-            }
-            composable(Halaman.Konseling.route) {
-                Example2()
-            }
-            composable(Halaman.Journal.route) {
-                Example3()
-            }
-            composable(Halaman.Journey.route) {
-                Example4()
-            }
-        }
+            modifier = modifier.padding(contentPadding)
+        )
     }
 }
 
@@ -185,7 +173,9 @@ fun ButtonBarSet(
                     modifier = Modifier.fillMaxWidth()
                 ){
                     Row(
-                        modifier = Modifier.fillMaxWidth().padding(3.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(3.dp)
                     ) {
                         Spacer(modifier = Modifier.size(10.dp))
                         Image(

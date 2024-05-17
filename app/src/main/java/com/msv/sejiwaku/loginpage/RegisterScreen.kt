@@ -39,11 +39,17 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @Composable
-fun RegisterPage() {
+fun RegisterPage(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -196,7 +202,7 @@ fun RegisterPage() {
                 ) {
                     Button(
                         modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                        onClick = { /*TODO*/ },
+                        onClick = { navController.navigate(Graph.ISI) },
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(
@@ -215,7 +221,7 @@ fun RegisterPage() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(text = "Don’t have an account?")
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = { navController.navigate(LoginScreen.Login.route) }) {
                         Text(
                             text = "Login",
                             color = Color(
@@ -236,6 +242,6 @@ fun RegisterPage() {
 @Composable
 private fun PreviewRegisterPage() {
     SejiwakuTheme {
-        RegisterPage()
+        RegisterPage(navController = rememberNavController())
     }
 }

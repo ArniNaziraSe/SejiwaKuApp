@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package com.msv.sejiwaku.loginpage
 
 import android.graphics.ColorSpace
@@ -48,7 +50,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -57,12 +62,17 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginPage(
+    navController: NavController
 ) {
     Column(
         modifier = Modifier
@@ -155,7 +165,7 @@ fun LoginPage(
                 .padding(start = 197.dp)
                 .fillMaxWidth()
         ) {
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(onClick = { navController.navigate(LoginScreen.LupaPassword.route) }) {
                 Text(text = "Forget Password ?", color = Color(
                     red = 0.2f,
                     green = 0.725f,
@@ -173,7 +183,7 @@ fun LoginPage(
         ) {
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(Graph.ISI) },
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(
@@ -238,7 +248,7 @@ fun LoginPage(
             horizontalArrangement = Arrangement.Center
         ) {
             Text(text = "Don’t have an account?")
-            TextButton(onClick = { /*TODO*/ }) {
+            TextButton(onClick = { navController.navigate(LoginScreen.Register.route) }) {
                 Text(
                     text = "Register",
                     color = Color(
@@ -259,6 +269,6 @@ fun LoginPage(
 @Composable
 private fun PreviewLoginPage() {
     SejiwakuTheme {
-        LoginPage()
+        LoginPage(navController = rememberNavController())
     }
 }
