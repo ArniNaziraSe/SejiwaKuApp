@@ -14,7 +14,6 @@ import com.msv.sejiwaku.bagianhalamandibuttonbar.Example3
 import com.msv.sejiwaku.bagianhalamandibuttonbar.Example4
 import com.msv.sejiwaku.homepage.HomeScreen
 import com.msv.sejiwaku.homepage.JourneyScreen
-import com.msv.sejiwaku.homepage.Lanjut
 
 @Composable
 fun HalamanBottonbar(navController: NavHostController,modifier: Modifier) {
@@ -35,9 +34,6 @@ fun HalamanBottonbar(navController: NavHostController,modifier: Modifier) {
         }
         composable(HalamanIsi.Journey.route){
             JourneyScreen(navController)
-        }
-        composable(HalamanIsi.Lanjut.route){
-            Lanjut()
         }
     }
 }

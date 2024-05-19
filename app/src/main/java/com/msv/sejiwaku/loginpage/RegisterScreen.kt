@@ -206,7 +206,7 @@ fun RegisterPage(
                 ) {
                     Button(
                         modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                        onClick = { navController.navigate(Graph.ISI) },
+                        onClick = { navController.navigate(LoginScreen.Login.route) },
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(
