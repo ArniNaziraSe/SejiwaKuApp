@@ -5,4 +5,5 @@ sealed class Halaman(val route: String) {
     data object  Konseling : Halaman("konseling")
     data object  Journal : Halaman("journal")
     data object Journey : Halaman("journey")
+    data object Lanjut : Halaman("lanjut")
 }

@@ -27,8 +27,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HalamanNavigasiAwal(navController = rememberNavController())
-                    //AppbardanBottonbar()
+                    //HalamanNavigasiAwal(navController = rememberNavController())
+                    AppbardanBottonbar()
                     //LoginPage(navController = rememberNavController())
                 }
             }

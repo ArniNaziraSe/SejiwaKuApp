@@ -26,4 +26,6 @@ object Graph{
     const val AWAL = "awal_graph"
     const val LOGINREGISTER = "loginregister"
     const val ISI = "isi_graph"
+    const val DETAILS = "details_graph"
+    const val DETAILSDUA = "details_graph_dua"
 }

@@ -26,7 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
+//import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.ui.theme.inter
 

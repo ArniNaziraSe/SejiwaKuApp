@@ -3,6 +3,7 @@ package com.msv.sejiwaku.halamanbottonbar_dan_appbar.pengaturbuttonbar
 import android.annotation.SuppressLint
 import android.media.Image
 import android.provider.MediaStore.Images
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -56,6 +57,7 @@ import com.msv.sejiwaku.bagianhalamandibuttonbar.Example4
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanBottonbar
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.pengaturbuttonbar.bottombarscreen.shouldShowBottomBar
 import com.msv.sejiwaku.ui.theme.inter
 
 /*NavHost(
@@ -91,33 +93,43 @@ fun AppbardanBottonbar(
     navController: NavHostController = rememberNavController()
 ) {
     val namafont = inter
+    val navBackStack by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStack?.destination?.route
     Scaffold(
 //        bagian ini gak ada appbarnya
 //        buat topbar
         topBar = {
-            TopAppBar(
-                title = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f), painter = painterResource(id = R.drawable.userprofile), contentDescription = null, modifier = Modifier.size(23.dp))
-                        Text(text = "Sejiwaku", fontFamily = namafont, fontSize = 21.sp, fontWeight = FontWeight.Bold, color = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f))
-                        Row {
-                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))
-                            Spacer(modifier = Modifier.size(9.dp))
-                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp))
-                            Spacer(modifier = Modifier.size(14.dp))
+            AnimatedVisibility(
+                visible = currentRoute.shouldShowBottomBar(),
+            ) {
+                TopAppBar(
+                    title = {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f), painter = painterResource(id = R.drawable.userprofile), contentDescription = null, modifier = Modifier.size(23.dp))
+                            Text(text = "Sejiwaku", fontFamily = namafont, fontSize = 21.sp, fontWeight = FontWeight.Bold, color = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f))
+                            Row {
+                                Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))
+                                Spacer(modifier = Modifier.size(9.dp))
+                                Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp))
+                                Spacer(modifier = Modifier.size(14.dp))
+                            }
                         }
                     }
-                }
-            )
+                )
+            }
         },
         // buat bottombar
         bottomBar = {
             // Ada diwaha fungsinya
-            ButtonBarSet(navController)
+            AnimatedVisibility(
+                visible = currentRoute.shouldShowBottomBar()
+            ) {
+                ButtonBarSet(navController)
+            }
         },
         // buat floating
 //        floatingActionButton = {
