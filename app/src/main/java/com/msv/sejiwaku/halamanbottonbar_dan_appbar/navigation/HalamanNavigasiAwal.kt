@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.msv.sejiwaku.bagianonboardingnya.HalamanOnboarding1
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.pengaturbuttonbar.AppbardanBottonbar
 
 @Composable
@@ -14,7 +15,7 @@ fun HalamanNavigasiAwal(navController: NavHostController) {
         route = Graph.AWAL,
         startDestination = Graph.LOGINREGISTER
     ) {
-        halamannavigation(navController = navController)
+        halamanlogin(navController = navController)
         composable(route = Graph.ISI){
             AppbardanBottonbar()
         }

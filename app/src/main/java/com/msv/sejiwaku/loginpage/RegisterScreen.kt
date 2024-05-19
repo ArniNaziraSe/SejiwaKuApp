@@ -45,6 +45,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
+import com.msv.sejiwaku.ui.theme.inter
 
 @Composable
 fun RegisterPage(
@@ -53,6 +54,9 @@ fun RegisterPage(
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
+        //variabel font
+        val namafont = inter
+        // pemanggil fontFamily = namafont,
         //variabel untuk TextField
         var namalengkapregister by remember {
             mutableStateOf("")
@@ -106,7 +110,7 @@ fun RegisterPage(
                 .padding(top = 6.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = "Register", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
+            Text(text = "Register",fontFamily = namafont, fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
             Spacer(modifier = Modifier.size(26.dp))
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -117,12 +121,12 @@ fun RegisterPage(
                     value = namalengkapregister, onValueChange = {
                         namalengkapregister = it
                     },
-                    label = { Text(text = "NAMA LENGKAP", fontWeight = FontWeight.Bold) },
+                    label = { Text(text = "NAMA LENGKAP", fontFamily = namafont, fontWeight = FontWeight.Bold) },
                     //maxLines = 2
                     singleLine = true,
                     modifier = Modifier.width(295.dp),
                     placeholder = {
-                        Text(text = "Samantha")
+                        Text(text = "Samantha", fontFamily = namafont)
                     },
 
                     )
@@ -131,12 +135,12 @@ fun RegisterPage(
                     value = emailregister, onValueChange = {
                         emailregister = it
                     },
-                    label = { Text(text = "EMAIL", fontWeight = FontWeight.Bold) },
+                    label = { Text(text = "EMAIL",fontFamily = namafont, fontWeight = FontWeight.Bold) },
                     //maxLines = 2
                     singleLine = true,
                     modifier = Modifier.width(295.dp),
                     placeholder = {
-                        Text(text = "smantha@mail.com")
+                        Text(text = "smantha@mail.com",fontFamily = namafont)
                     },
 
                     )
@@ -148,7 +152,7 @@ fun RegisterPage(
                     },
                     modifier = Modifier.width(295.dp),
                     label = {
-                        Text(text = "KATA SANDI", fontWeight = FontWeight.Bold)
+                        Text(text = "KATA SANDI", fontFamily = namafont, fontWeight = FontWeight.Bold)
                     },
                     trailingIcon = {
                         IconButton(onClick = {
@@ -175,7 +179,7 @@ fun RegisterPage(
                     },
                     modifier = Modifier.width(295.dp),
                     label = {
-                        Text(text = "KONFIRMASI KATA SANDI", fontWeight = FontWeight.Bold)
+                        Text(text = "KONFIRMASI KATA SANDI", fontFamily = namafont, fontWeight = FontWeight.Bold)
                     },
                     trailingIcon = {
                         IconButton(onClick = {
@@ -213,7 +217,7 @@ fun RegisterPage(
                             ),
                         )
                     ) {
-                        Text(text = "Register")
+                        Text(text = "Register", fontFamily = namafont,)
                     }
                 }
                 Column(
@@ -224,6 +228,7 @@ fun RegisterPage(
                     TextButton(onClick = { navController.navigate(LoginScreen.Login.route) }) {
                         Text(
                             text = "Login",
+                            fontFamily = namafont,
                             color = Color(
                                 red = 0.2f,
                                 green = 0.725f,

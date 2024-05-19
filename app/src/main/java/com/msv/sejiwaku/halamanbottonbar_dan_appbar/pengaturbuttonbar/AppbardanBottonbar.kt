@@ -6,6 +6,7 @@ import android.provider.MediaStore.Images
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -26,13 +28,16 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,6 +56,7 @@ import com.msv.sejiwaku.bagianhalamandibuttonbar.Example4
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanBottonbar
+import com.msv.sejiwaku.ui.theme.inter
 
 /*NavHost(
 navController = navController,
@@ -84,12 +90,30 @@ fun AppbardanBottonbar(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
+    val namafont = inter
     Scaffold(
 //        bagian ini gak ada appbarnya
 //        buat topbar
-//        topBar = {
-//            TopAppBar(title = { Text(text = "oke") })
-//        },
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f), painter = painterResource(id = R.drawable.userprofile), contentDescription = null, modifier = Modifier.size(23.dp))
+                        Text(text = "Sejiwaku", fontFamily = namafont, fontSize = 21.sp, fontWeight = FontWeight.Bold, color = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f))
+                        Row {
+                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))
+                            Spacer(modifier = Modifier.size(9.dp))
+                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp))
+                            Spacer(modifier = Modifier.size(14.dp))
+                        }
+                    }
+                }
+            )
+        },
         // buat bottombar
         bottomBar = {
             // Ada diwaha fungsinya
@@ -115,6 +139,7 @@ fun ButtonBarSet(
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
+
     NavigationBar(
         modifier = modifier.background(Color.White)
     ) {
@@ -124,22 +149,22 @@ fun ButtonBarSet(
         val bottonbar = listOf(
             BottonBar(
                 title = "Home",
-                icon = R.drawable.off_eye,
+                icon = R.drawable.bottonbarhome,
                 screen = Halaman.Home
             ),
             BottonBar(
                 title = "Konseling",
-                icon = R.drawable.off_eye,
+                icon = R.drawable.bottonbarkonseling,
                 screen = Halaman.Konseling
             ),
             BottonBar(
                 title = "Journal",
-                icon = R.drawable.off_eye,
+                icon = R.drawable.bottonbarjurnal,
                 screen = Halaman.Journal
             ),
             BottonBar(
                 title = "Journey",
-                icon = R.drawable.off_eye,
+                icon = R.drawable.bottonbarjourney,
                 screen = Halaman.Journey
             )
         )
@@ -147,48 +172,47 @@ fun ButtonBarSet(
         bottonbar.map { bottombar ->
             val select = currentRoute == bottombar.screen.route
             val klik = if (select){
-                Color.Red
+                Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f)
             } else{
-                Color.White
+                Color(red = 0.0f, green = 0.31f, blue = 0.357f, alpha = 1.0f)
             }
-            Spacer(modifier = Modifier.size(7.dp))
+//            Spacer(modifier = Modifier.size(1.dp))
+            Column(
+
+            ) {
+
+            }
             Surface(
-                shape = RoundedCornerShape(10.dp),
+                onClick = {
+                    navController.navigate(bottombar.screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        restoreState = true
+
+                    }
+                },
                 modifier = Modifier
 
                     .height(60.dp)
                     .width(70.dp)
                     .padding(start = 20.dp, top = 10.dp)
-                    .clickable {
-                        navController.navigate(bottombar.screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
-                            }
-                            restoreState = true
-
-                        }
-                    }
+//                    .clickable {
+//
+//                    }
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
                 ){
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(3.dp)
-                    ) {
-                        Spacer(modifier = Modifier.size(10.dp))
-                        Image(
-                            painter = painterResource(id = bottombar.icon),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .size(25.dp),
-                            colorFilter = ColorFilter.tint(klik)
-                        )
-                    }
-                    
-                    Text(text = bottombar.title, fontSize = 10.sp, modifier = Modifier.padding(top = 4.dp, start = 10.dp))
 
+                    Image(
+                        painter = painterResource(id = bottombar.icon),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .size(45.dp)
+                            .padding(start = 10.dp, top = 5.dp),
+                        colorFilter = ColorFilter.tint(klik)
+                    )
                 }
             }
         }

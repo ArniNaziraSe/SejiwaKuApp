@@ -8,3 +8,11 @@ https://picsvg.com/
 
 android minimal requirement :
 Android 7
+
+panggil font :
+
+Buat variabelnya: val namafont = inter
+
+Example : Text(text = "Tes", fontFamily = namafont)
+
+Bisa juga : Text(text = "Tes", fontFamily = inter)

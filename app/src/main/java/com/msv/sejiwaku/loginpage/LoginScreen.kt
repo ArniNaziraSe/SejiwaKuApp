@@ -68,6 +68,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
+import com.msv.sejiwaku.ui.theme.inter
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -79,6 +80,8 @@ fun LoginPage(
             .fillMaxSize()
 
     ) {
+
+        val namafont = inter
         var emaillogin by remember {
             mutableStateOf("")
         }
@@ -111,7 +114,7 @@ fun LoginPage(
                 .padding(top = 24.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = "Log In", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
+            Text(text = "Log In", fontSize = 24.sp, fontFamily = namafont, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
             Spacer(modifier = Modifier.size(26.dp))
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -121,12 +124,12 @@ fun LoginPage(
                     value = emaillogin, onValueChange = {
                         emaillogin = it
                     },
-                    label = { Text(text = "EMAIL", fontWeight = FontWeight.Bold) },
+                    label = { Text(text = "EMAIL",fontFamily = namafont, fontWeight = FontWeight.Bold) },
                     //maxLines = 2
                     singleLine = true,
                     modifier = Modifier.width(295.dp),
                     placeholder = {
-                        Text(text = "smantha@mail.com")
+                        Text(text = "smantha@mail.com",fontFamily = namafont,)
                     },
 
                     )
@@ -138,7 +141,7 @@ fun LoginPage(
                     },
                     modifier = Modifier.width(295.dp),
                     label = {
-                        Text(text = "KATA SANDI", fontWeight = FontWeight.Bold)
+                        Text(text = "KATA SANDI", fontFamily = namafont, fontWeight = FontWeight.Bold)
                     },
                     trailingIcon = {
                         IconButton(onClick = {
@@ -166,7 +169,7 @@ fun LoginPage(
                 .fillMaxWidth()
         ) {
             TextButton(onClick = { navController.navigate(LoginScreen.LupaPassword.route) }) {
-                Text(text = "Forget Password ?", color = Color(
+                Text(text = "Forget Password ?",fontFamily = namafont, color = Color(
                     red = 0.2f,
                     green = 0.725f,
                     blue = 0.675f,
@@ -183,7 +186,7 @@ fun LoginPage(
         ) {
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                onClick = { navController.navigate(Graph.ISI) },
+                onClick = { navController.navigate(LoginScreen.Onbording1.route) },
                 shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(
@@ -194,7 +197,7 @@ fun LoginPage(
                     ),
                 )
             ) {
-                Text(text = "Login")
+                Text(text = "Login",fontFamily = namafont,)
             }
         }
         Column(
@@ -210,7 +213,7 @@ fun LoginPage(
             ) {
                 Divider(color = Color(red = 0.745f, green = 0.773f, blue = 0.824f, alpha = 1.0f), thickness = 1.dp, modifier = Modifier.size(width = 150.dp, height = 1.dp))
                 Spacer(modifier = Modifier.size(2.dp))
-                Text(text = "   Or", modifier = Modifier
+                Text(text = "  Or",fontFamily = namafont, modifier = Modifier
                     .size(width = 40.dp, height = 20.dp)
                 )
                 Spacer(modifier = Modifier.size(2.dp))
@@ -227,19 +230,19 @@ fun LoginPage(
                 onClick = { /*TODO*/ },
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.facebook), contentDescription = null, modifier = Modifier.size(24.dp))
             }
             OutlinedIconButton(
                 onClick = { /*TODO*/ },
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier.size(24.dp))
             }
             OutlinedIconButton(
                 onClick = { /*TODO*/ },
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                Icon(painter = painterResource(id = R.drawable.instagram), contentDescription = null, modifier = Modifier.size(24.dp))
             }
         }
         Row(
@@ -247,10 +250,11 @@ fun LoginPage(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = "Don’t have an account?")
+            Text(text = "Don’t have an account?",fontFamily = namafont)
             TextButton(onClick = { navController.navigate(LoginScreen.Register.route) }) {
                 Text(
                     text = "Register",
+                    fontFamily = namafont,
                     color = Color(
                         red = 0.2f,
                         green = 0.725f,
