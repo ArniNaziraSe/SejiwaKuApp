@@ -83,7 +83,14 @@ fun OnboardingHasil(
         ) {
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                onClick = { navController.navigate(Graph.ISI) },
+                onClick = {
+                    navController.navigate(Graph.ISI) {
+                    popUpTo(LoginScreen.HasilOnboarding.route) {
+                        inclusive = true
+                    }
+                }
+                          /*navController.navigate(Graph.ISI)*/
+                          },
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(

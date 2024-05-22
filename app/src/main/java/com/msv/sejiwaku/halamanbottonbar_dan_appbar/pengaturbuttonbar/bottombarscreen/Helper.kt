@@ -1,13 +1,14 @@
 package com.msv.sejiwaku.halamanbottonbar_dan_appbar.pengaturbuttonbar.bottombarscreen
 
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
+//import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
 
 
 fun String?.shouldShowBottomBar():Boolean{
     return this in setOf(
-        HalamanIsi.Home.route,
-        HalamanIsi.Konseling.route,
-        HalamanIsi.Journal.route,
-        HalamanIsi.Journey.route
+        Halaman.Home.route,
+        Halaman.Konseling.route,
+        Halaman.Journal.route,
+        Halaman.Journey.route
     )
 }

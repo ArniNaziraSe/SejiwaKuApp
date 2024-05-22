@@ -18,39 +18,35 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Image
-import androidx.compose.material.icons.filled.Place
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
+//import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 //import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
 import com.msv.sejiwaku.ui.theme.inter
 
 data class JourneyData(
-    val gambar : Int,
+    val gambar: Int,
     val judul: String,
-    val waktu: String
+    val waktu: String,
+    val screen: Halaman
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,7 +78,7 @@ fun JourneyScreen(
                 .padding(contentPadding)
                 .verticalScroll(scrollState),
         ) {
-            val perpindahan = { }
+            val perpindahan = { navController.navigate(Halaman.Ptsatu.route) }
             val ukuran = 97.dp
             val warnaabuabu = Color(red = 0.518f, green = 0.518f, blue = 0.518f, alpha = 1.0f)
             val warnatoska = Color(
@@ -111,25 +107,28 @@ fun JourneyScreen(
                     JourneyData(
                         gambar = R.drawable.journey01,
                         judul = "Menerima Diri pt 1",
-                        waktu = "Durasi 3 hari"
+                        waktu = "Durasi 3 hari",
+                        screen = Halaman.Ptsatu
                     ),
-                    JourneyData(
-                        gambar = R.drawable.journey02,
-                        judul = "Menerima Diri pt 2",
-                        waktu = "Durasi 4 hari"
-                    ),
-                    JourneyData(
-                        gambar = R.drawable.journey03,
-                        judul = "Menerima Diri pt 3",
-                        waktu = "Durasi 5 hari"
-                    )
+//                    JourneyData(
+//                        gambar = R.drawable.journey02,
+//                        judul = "Menerima Diri pt 2",
+//                        waktu = "Durasi 4 hari",
+//                        route = Halaman.Ptsatu.route
+//                    ),
+//                    JourneyData(
+//                        gambar = R.drawable.journey03,
+//                        judul = "Menerima Diri pt 3",
+//                        waktu = "Durasi 5 hari",
+//                        route = Halaman.Ptsatu.route
+//                    )
                 )
                 journeyku.map { journeyku ->
 
                     Box {
                         Surface(
                             modifier = Modifier
-                                .clickable { }
+                                .clickable {  }
                                 .height(ukuran)
                                 .fillMaxWidth(),
                             color = Color(
@@ -143,7 +142,15 @@ fun JourneyScreen(
                             ) {
                         }
                         Surface(
-                            onClick = perpindahan,
+                            onClick = {
+                                navController.navigate(journeyku.screen.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    restoreState = true
+
+                                }
+                            },
                             modifier = Modifier
                                 .height(94.dp)
                                 .fillMaxWidth(),
@@ -187,18 +194,21 @@ fun JourneyScreen(
                     JourneyData(
                         gambar = R.drawable.journey11,
                         judul = "Kamu Pasti Bisa pt 1",
-                        waktu = "Durasi 3 hari"
+                        waktu = "Durasi 3 hari",
+                        screen = Halaman.Ptsatu
                     ),
-                    JourneyData(
-                        gambar = R.drawable.journey12,
-                        judul = "Kamu Pasti Bisa pt 2",
-                        waktu = "Durasi 4 hari"
-                    ),
-                    JourneyData(
-                        gambar = R.drawable.journey11,
-                        judul = "Kamu Pasti Bisa pt 3",
-                        waktu = "Durasi 3 hari"
-                    ),
+//                    JourneyData(
+//                        gambar = R.drawable.journey12,
+//                        judul = "Kamu Pasti Bisa pt 2",
+//                        waktu = "Durasi 4 hari",
+//                        route = Halaman.Ptsatu.route
+//                    ),
+//                    JourneyData(
+//                        gambar = R.drawable.journey11,
+//                        judul = "Kamu Pasti Bisa pt 3",
+//                        waktu = "Durasi 3 hari",
+//                        route = Halaman.Ptsatu.route
+//                    ),
                 )
                 journeykudua.map { journeykudua ->
 
@@ -219,7 +229,15 @@ fun JourneyScreen(
                             ) {
                         }
                         Surface(
-                            onClick = perpindahan,
+                            onClick = {
+                                navController.navigate(journeykudua.screen.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    restoreState = true
+
+                                }
+                            },
                             modifier = Modifier
                                 .height(94.dp)
                                 .fillMaxWidth(),

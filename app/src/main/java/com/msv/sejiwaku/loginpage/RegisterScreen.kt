@@ -1,5 +1,6 @@
 package com.msv.sejiwaku.loginpage
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,12 +26,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -43,14 +46,24 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
+import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
 import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
+import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
+import kotlinx.coroutines.launch
 
 @Composable
 fun RegisterPage(
     navController: NavController
 ) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+
+    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
     Column(
         modifier = Modifier.fillMaxSize(),
     ) {
@@ -206,7 +219,22 @@ fun RegisterPage(
                 ) {
                     Button(
                         modifier = Modifier.size(height = 54.dp, width = 295.dp),
-                        onClick = { navController.navigate(LoginScreen.Login.route) },
+                        onClick = {
+                            if (namalengkapregister.isBlank()){
+                                Toast.makeText(context, "Harus Diisi", Toast.LENGTH_SHORT).show()
+                            } else {
+                                sharedPreferencesManager.namalengkapregister = namalengkapregister
+                                coroutineScope.launch {
+                                    dataStore.saveStatus(true)
+                                }
+                                navController.navigate(LoginScreen.Login.route) {
+                                    popUpTo(LoginScreen.Register.route) {
+                                        inclusive = true
+                                    }
+                                }
+                            }
+                                  /*navController.navigate(LoginScreen.Login.route)*/
+                                  },
                         shape = RoundedCornerShape(10.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(
