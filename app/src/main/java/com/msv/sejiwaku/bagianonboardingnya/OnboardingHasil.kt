@@ -86,7 +86,7 @@ fun OnboardingHasil(
                 onClick = {
                     navController.navigate(Graph.ISI) {
                     popUpTo(LoginScreen.HasilOnboarding.route) {
-                        inclusive = true
+                        inclusive = false
                     }
                 }
                           /*navController.navigate(Graph.ISI)*/

@@ -42,7 +42,7 @@ fun JournalScreen() {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            Spacer(modifier = Modifier.size(48.dp))
+            Spacer(modifier = Modifier.size(69.dp))
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -207,9 +207,9 @@ fun JournalScreen() {
                                 green = 0.725f,
                                 blue = 0.675f,
                                 alpha = 1.0f
-                            ))
+                            ), fontSize = 9.sp)
                             Spacer(modifier = Modifier.size(3.dp))
-                            Image(painter = painterResource(id = R.drawable.journallanjutdua), contentDescription = null)
+                            Image(painter = painterResource(id = R.drawable.journallanjutdua), contentDescription = null, modifier = Modifier.size(18.dp))
                         }
                     }
                 }

@@ -189,7 +189,7 @@ fun LoginPage(
                         }
                         navController.navigate(LoginScreen.Onbording1.route) {
                             popUpTo(LoginScreen.Login.route) {
-                                inclusive = true
+                                inclusive = false
                             }
                         }
                     }

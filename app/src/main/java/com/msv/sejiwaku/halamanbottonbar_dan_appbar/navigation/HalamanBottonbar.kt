@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.msv.sejiwaku.homepage.HomeScreen
 import com.msv.sejiwaku.homepage.JournalScreen
 import com.msv.sejiwaku.homepage.JourneyScreen
 import com.msv.sejiwaku.homepage.KonselingScreen
@@ -18,10 +19,10 @@ fun HalamanBottonbar(navController: NavHostController,modifier: Modifier) {
         startDestination = Halaman.Home.route
     ) {
         composable(Halaman.Home.route){
-            //HomeScreen()
+            HomeScreen()
             //JourneyScreen(navController)
             //KonselingScreen(navController)
-            JournalScreen()
+            //JournalScreen()
         }
         composable(Halaman.Konseling.route){
             KonselingScreen(navController)

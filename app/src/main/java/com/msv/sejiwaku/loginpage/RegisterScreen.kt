@@ -229,7 +229,7 @@ fun RegisterPage(
                                 }
                                 navController.navigate(LoginScreen.Login.route) {
                                     popUpTo(LoginScreen.Register.route) {
-                                        inclusive = true
+                                        inclusive = false
                                     }
                                 }
                             }
