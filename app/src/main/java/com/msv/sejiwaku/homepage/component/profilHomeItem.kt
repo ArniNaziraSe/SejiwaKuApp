@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.homepage.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,7 +35,8 @@ fun profilHomeItem(name: String, status: String) {
             contentDescription = null,
             modifier = Modifier
                 .size(50.dp)
-                .clip(CircleShape),
+                .clip(CircleShape)
+                .border(3.dp, color = Color(0xFF33B9AC), CircleShape),
             contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.width(16.dp))

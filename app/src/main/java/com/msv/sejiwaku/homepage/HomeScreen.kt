@@ -39,9 +39,6 @@ import com.msv.sejiwaku.homepage.component.journeys
 import com.msv.sejiwaku.homepage.component.profilHomeItem
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
-
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier

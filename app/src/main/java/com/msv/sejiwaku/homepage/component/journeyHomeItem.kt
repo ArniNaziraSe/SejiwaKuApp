@@ -60,7 +60,7 @@ fun journeyHomeItem(journey: journey) {
                 contentDescription = null,
                 modifier = Modifier
                     .padding(10.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.FillWidth
             )
             Row(
                 modifier = Modifier.padding(5.dp, bottom = 10.dp)
