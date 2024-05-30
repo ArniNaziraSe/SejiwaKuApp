@@ -45,10 +45,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Halaman
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
+import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
 import kotlinx.coroutines.launch
@@ -227,8 +225,8 @@ fun RegisterPage(
                                 coroutineScope.launch {
                                     dataStore.saveStatus(true)
                                 }
-                                navController.navigate(LoginScreen.Login.route) {
-                                    popUpTo(LoginScreen.Register.route) {
+                                navController.navigate(BagianLoginDanTemannya.OnboardingPertama.route) {
+                                    popUpTo(BagianLoginDanTemannya.Register.route) {
                                         inclusive = false
                                     }
                                 }
@@ -253,7 +251,7 @@ fun RegisterPage(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(text = "Don’t have an account?")
-                    TextButton(onClick = { navController.navigate(LoginScreen.Login.route) }) {
+                    TextButton(onClick = { navController.navigate(BagianLoginDanTemannya.Login.route) }) {
                         Text(
                             text = "Login",
                             fontFamily = namafont,

@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -13,6 +14,15 @@ val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
     providerPackage = "com.google.android.gms",
     certificates = R.array.com_google_android_gms_fonts_certs
+)
+
+val orenpekat = Color(red = 1.0f, green = 0.541f, blue = 0.0f, alpha = 1.0f)
+
+val toska = Color(
+    red = 0.2f,
+    green = 0.725f,
+    blue = 0.675f,
+    alpha = 1.0f
 )
 
 val fontName = GoogleFont("Inter")

@@ -25,9 +25,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.Graph
-//import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
+import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.navigator.Urutan
 import com.msv.sejiwaku.ui.theme.inter
 
 @Composable
@@ -84,8 +83,8 @@ fun OnboardingHasil(
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
                 onClick = {
-                    navController.navigate(Graph.ISI) {
-                    popUpTo(LoginScreen.HasilOnboarding.route) {
+                    navController.navigate(Urutan.HOMEBAR) {
+                    popUpTo(BagianLoginDanTemannya.HasilOnboarding.route) {
                         inclusive = false
                     }
                 }

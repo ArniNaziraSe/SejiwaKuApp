@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
+import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.inter
 
 data class OnSatu(
@@ -40,7 +40,7 @@ data class OnSatu(
 
 @Composable
 fun HalamanOnboarding1(navController: NavController) {
-    val perpindahan = {navController.navigate(LoginScreen.Onbording2.route)}
+    val perpindahan = {navController.navigate(BagianLoginDanTemannya.OnboardingKedua.route)}
     val namafont = inter
     val ukuran = 97.dp
     Column {
@@ -159,7 +159,7 @@ fun HalamanOnboarding1(navController: NavController) {
 ////////////////////////////////////////
 @Composable
 fun HalamanOnboarding2(navController: NavController) {
-    val perpindahan = {navController.navigate(LoginScreen.Onbording3.route)}
+    val perpindahan = {navController.navigate(BagianLoginDanTemannya.OnboardingKetiga.route)}
     val namafont = inter
     val ukuran = 97.dp
     Column {
@@ -279,7 +279,7 @@ fun HalamanOnboarding2(navController: NavController) {
 
 @Composable
 fun HalamanOnboarding3(navController: NavController) {
-    val perpindahan = {navController.navigate(LoginScreen.HasilOnboarding.route)}
+    val perpindahan = {navController.navigate(BagianLoginDanTemannya.HasilOnboarding.route)}
     val namafont = inter
     val ukuran = 97.dp
     Column {

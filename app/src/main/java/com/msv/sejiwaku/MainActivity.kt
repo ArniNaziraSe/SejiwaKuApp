@@ -1,5 +1,6 @@
 package com.msv.sejiwaku
 
+import LinkLazyRow
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,11 +9,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.msv.sejiwaku.bagianonboardingnya.OnboardingHasil
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanNavigasiAwal
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.pengaturbuttonbar.AppbardanBottonbar
-import com.msv.sejiwaku.loginpage.LoginPage
+import com.msv.sejiwaku.homepage.journey.JourneyScreen
+import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
+import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreen
+import com.msv.sejiwaku.homepage.konseling.detailscreen.DetailScreenKonseling
+import com.msv.sejiwaku.navigator.OtakNavigasi
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 
@@ -27,9 +28,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HalamanNavigasiAwal(navController = rememberNavController())
+                    //HalamanNavigasiAwal(navController = rememberNavController())
                     //AppbardanBottonbar()
                     //LoginPage(navController = rememberNavController())
+                    //BottonBarNavigation()
+                    OtakNavigasi(navController = rememberNavController())
+                    //JournalScreen(navController = rememberNavController())
+                    //JourneyScreen(navController = rememberNavController()){}
+                    //DetailScreenKonseling(navController = rememberNavController())
+                    //LinkLazyRow(urls = sampleUrls)
+                    //MenerimaDiriScreen()
+                    //HirupNafasPerlahan()
                 }
             }
         }

@@ -81,4 +81,10 @@ dependencies {
 
     // Font
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.7")
+
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.5.0-rc01")
+
+    // BottomNavigation
+    implementation ("androidx.compose.material:material:1.4.2")
 }

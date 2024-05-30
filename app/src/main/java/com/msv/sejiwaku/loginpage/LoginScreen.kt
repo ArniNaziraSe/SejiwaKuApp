@@ -48,8 +48,8 @@ import androidx.datastore.core.DataStore
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.LoginScreen
 import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
+import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
 import kotlinx.coroutines.launch
@@ -160,7 +160,7 @@ fun LoginPage(
                 .padding(start = 197.dp)
                 .fillMaxWidth()
         ) {
-            TextButton(onClick = { navController.navigate(LoginScreen.LupaPassword.route) }) {
+            TextButton(onClick = { navController.navigate(BagianLoginDanTemannya.LupaPassword.route) }) {
                 Text(text = "Forget Password ?",fontFamily = namafont, color = Color(
                     red = 0.2f,
                     green = 0.725f,
@@ -187,8 +187,8 @@ fun LoginPage(
                         coroutineScope.launch {
                             dataStore.saveStatus(true)
                         }
-                        navController.navigate(LoginScreen.Onbording1.route) {
-                            popUpTo(LoginScreen.Login.route) {
+                        navController.navigate(BagianLoginDanTemannya.OnboardingPertama.route) {
+                            popUpTo(BagianLoginDanTemannya.Login.route) {
                                 inclusive = false
                             }
                         }
@@ -259,7 +259,7 @@ fun LoginPage(
             horizontalArrangement = Arrangement.Center
         ) {
             Text(text = "Don’t have an account?",fontFamily = namafont)
-            TextButton(onClick = { navController.navigate(LoginScreen.Register.route) }) {
+            TextButton(onClick = { navController.navigate(BagianLoginDanTemannya.Register.route) }) {
                 Text(
                     text = "Register",
                     fontFamily = namafont,
