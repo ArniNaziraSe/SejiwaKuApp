@@ -13,6 +13,9 @@ import com.msv.sejiwaku.homepage.journey.JourneyScreen
 import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
 import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreen
 import com.msv.sejiwaku.homepage.konseling.detailscreen.DetailScreenKonseling
+import com.msv.sejiwaku.inJurnal.screen.journalScreen1
+import com.msv.sejiwaku.inJurnal.screen.journalScreen2
+import com.msv.sejiwaku.inJurnal.screen.journalScreen3
 import com.msv.sejiwaku.navigator.OtakNavigasi
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
@@ -39,6 +42,9 @@ class MainActivity : ComponentActivity() {
                     //LinkLazyRow(urls = sampleUrls)
                     //MenerimaDiriScreen()
                     //HirupNafasPerlahan()
+                    journalScreen1()
+                    journalScreen2()
+                    journalScreen3()
                 }
             }
         }
