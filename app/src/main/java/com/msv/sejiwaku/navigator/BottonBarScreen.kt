@@ -28,6 +28,9 @@ sealed class BottonBarScreen(
         route = "DETAIL",
         gambar = 1
     )
-
+    object DetailMenerimaDiript1 : BottonBarScreen(
+        route = "DetailMenerimaDiript1",
+        5
+    )
 }
 

@@ -12,6 +12,8 @@ import com.msv.sejiwaku.homepage.journalscreen.JournalScreen
 import com.msv.sejiwaku.homepage.journey.JourneyScreen
 import com.msv.sejiwaku.homepage.konseling.KonselingScreen
 import com.msv.sejiwaku.homepage.detailyangbelumjadi.Pt1tes
+import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreen
+import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
 
 @Composable
 fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
@@ -39,7 +41,10 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
             )
         }
         composable(route = BottonBarScreen.Detail.route){
-            //Tes1()
+            MenerimaDiriScreen(navController)
+        }
+        composable(route = BottonBarScreen.DetailMenerimaDiript1.route){
+            HirupNafasPerlahan(navController = navController)
         }
         detailpertama(navController = navController)
     }

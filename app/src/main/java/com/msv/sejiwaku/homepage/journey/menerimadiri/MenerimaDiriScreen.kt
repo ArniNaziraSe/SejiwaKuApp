@@ -14,12 +14,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.BagianTombolMenerimaDiriPt1
 import com.msv.sejiwaku.ui.theme.inter
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @Composable
-fun MenerimaDiriScreen() {
+fun MenerimaDiriScreen(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -38,16 +43,22 @@ fun MenerimaDiriScreen() {
             gambarnya = R.drawable.gambarmenrrimadiri1,
             judulnya = "Hirup Nafas Perlahan",
             waktunya = "15 menit",
-            onClick = {},
-            lebar = 334
+            onClick = {navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route)},
+            lebar = 334,
+            cheklish = painterResource(id = R.drawable.cheklish),
+            alpha = 0.0f,
+            ukurancheklish = 40
         )
         Spacer(modifier = Modifier.size(11.dp))
         BagianTombolMenerimaDiriPt1(
-            gambarnya = R.drawable.gambarmenrrimadiri1,
+            gambarnya = R.drawable.gambarmenrrimadiri2,
             judulnya = "Dengarkan Musik Tenang",
             waktunya = "3 menit",
             onClick = {},
-            lebar = 334
+            lebar = 334,
+            cheklish = painterResource(id = R.drawable.cheklish),
+            alpha = 0.0f,
+            ukurancheklish = 40
         )
     }
 }
@@ -55,5 +66,5 @@ fun MenerimaDiriScreen() {
 @Preview(showBackground = true)
 @Composable
 private fun PreviewMenerimaDiriScreen() {
-    MenerimaDiriScreen()
+    MenerimaDiriScreen(navController = rememberNavController())
 }

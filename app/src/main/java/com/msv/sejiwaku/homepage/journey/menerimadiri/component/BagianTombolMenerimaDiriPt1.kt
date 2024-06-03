@@ -20,7 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -34,7 +36,10 @@ fun BagianTombolMenerimaDiriPt1(
     judulnya:String,
     waktunya:String,
     onClick:() -> Unit,
-    lebar:Int
+    lebar:Int,
+    cheklish:Painter,
+    alpha:Float,
+    ukurancheklish:Int
 ) {
     val namafont = inter
     val ukuran = 97.dp
@@ -93,6 +98,13 @@ fun BagianTombolMenerimaDiriPt1(
                     ) {
                         Text(text = judulnya,fontFamily = namafont, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                         Text(text = waktunya,fontFamily = namafont, fontSize = 9.sp)
+                    }
+                    Spacer(modifier = Modifier.size(ukurancheklish.dp))
+                    Column(
+                        modifier = Modifier.fillMaxHeight(),
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Image(painter = cheklish, contentDescription = "cheklish", modifier = Modifier.size(22.dp), alpha = alpha)
                     }
                 }
             }

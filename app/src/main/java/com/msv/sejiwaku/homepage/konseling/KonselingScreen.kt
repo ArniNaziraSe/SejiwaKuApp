@@ -59,7 +59,6 @@ fun KonselingScreen(
     onClik: () -> Unit
 ) {
     Spacer(modifier = Modifier.size(30.dp))
-    val namafont = inter
     Scaffold(
         topBar = {
 
