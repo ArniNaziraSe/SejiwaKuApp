@@ -1,4 +1,4 @@
-package com.msv.sejiwaku.homepage.journey.menerimadiri.musik
+package com.msv.sejiwaku.homepage.journey.kamupastibisa.curhatpadadirisendiri.musik
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.Image
@@ -13,12 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -31,11 +26,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.homepage.journey.menerimadiri.component.WaktuTimer
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.WaktuTimerDalam
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @Composable
-fun MusikStatu(
+fun MusikDua(
     navController: NavController
 ) {
     val mContext = LocalContext.current
@@ -60,10 +55,10 @@ fun MusikStatu(
             ) {
                 Image(painter = painterResource(id = R.drawable.backdua), contentDescription = "tombol back",modifier = Modifier
                     .size(20.dp)
-                    .clickable { })
+                    .clickable { navController.navigate(BottonBarScreen.DetailCurhatPadaDiriSendiri.route) })
                 Image(painter = painterResource(id = R.drawable.nextdua), contentDescription = "tombol next", modifier = Modifier
                     .size(width = 45.dp, height = 20.dp)
-                    .clickable { })
+                    .clickable { navController.navigate(BottonBarScreen.DetailKamuPastiBisaTiga.route) })
             }
             Spacer(modifier = Modifier.size(170.dp))
             Column(
@@ -82,7 +77,7 @@ fun MusikStatu(
                 Divider(color = Color.White, thickness = 1.dp)
                 Spacer(modifier = Modifier.size(10.dp))
                 WaktuTimerDalam(
-                    timer = "03 : 00",
+                    timer = "15 : 00",
                     colortext = Color.White,
                     colorbackground = Color.Transparent,
                     colorborder = Color.White,
@@ -100,5 +95,5 @@ fun MusikStatu(
 @Preview
 @Composable
 private fun PreviewMusikSatu() {
-    MusikStatu(navController = rememberNavController())
+    MusikDua(navController = rememberNavController())
 }

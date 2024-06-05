@@ -2,6 +2,7 @@ package com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +29,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.WaktuTimer
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -45,9 +47,10 @@ fun DengarkanMusikTenang(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.DetailMenerimaDiriScreenDua.route) }
         )
         Spacer(modifier = Modifier.size(11.dp))
-        Text(text = "Dengarkan Lagu Pertama ini Untuk Meredakan Emosimu", fontFamily = inter, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 37.dp))
+        Text(text = "Dengarkan Lagu Pertama ini Untuk Meredakan Emosimu", fontFamily = inter, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 37.dp, end = 37.dp))
         Spacer(modifier = Modifier.size(10.dp))
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -73,7 +76,7 @@ fun DengarkanMusikTenang(
             id = R.drawable.buttonmulai
         )
         ) {
-            //navigator
+            navController.navigate(BottonBarScreen.DetailMusikSatu.route)
         }
     }
 }

@@ -32,5 +32,50 @@ sealed class BottonBarScreen(
         route = "DetailMenerimaDiript1",
         5
     )
+    object DetailHirupNapasPerlahan : BottonBarScreen(
+        route = "DetailHirupNapasPerlahan",
+        1
+    )
+    object DetailMenerimaDiriScreenDua : BottonBarScreen(
+        route = "DetailMenerimaDiriScreenDua",
+        1
+    )
+    object DetailMenerimaDiriScreenTiga : BottonBarScreen(
+        route = "DetailMenerimaDiriScreenTiga",
+        1
+    )
+
+    object DetailDengarkanMusikTenang : BottonBarScreen(
+        route = "DetailDengarkanMusikTenang",
+        1
+    )
+    object DetailMusikSatu : BottonBarScreen(
+        route = "DetailMusikSatu",
+        1
+    )
+    object DetailKamuPastiBisaSatu : BottonBarScreen(
+        route = "DetailKamuPastiBisaSatu",
+        1
+    )
+    object DetailKamuPastiBisaDua : BottonBarScreen(
+        route = "DetailKamuPastiBisaDu",
+        1
+    )
+    object DetailKamuPastiBisaTiga : BottonBarScreen(
+        route = "DetailKamuPastiBisaTiga",
+        1
+    )
+    object DetailPereganganOtot : BottonBarScreen(
+        route = "DetailPereganganOtot",
+        1
+    )
+    object DetailCurhatPadaDiriSendiri : BottonBarScreen(
+        route = "DetailCurhatPadaDiriSendiri",
+        1
+    )
+    object DetailMusikDua : BottonBarScreen(
+        route = "DetailMusikDua",
+        1
+    )
 }
 

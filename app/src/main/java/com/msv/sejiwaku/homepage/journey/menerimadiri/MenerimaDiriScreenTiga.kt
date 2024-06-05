@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.homepage.journey.menerimadiri
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +35,7 @@ fun MenerimaDiriScreenTiga(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route) }
         )
         Spacer(modifier = Modifier.size(13.dp))
         Text(text = "Menerima Diri pt 1", fontSize = 12.sp, fontWeight = FontWeight.Bold, fontFamily = inter, modifier = Modifier.padding(start = 25.dp))

@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.homepage.journey.menerimadiri
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +35,7 @@ fun MenerimaDiriScreen(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.Journey.route) }
         )
         Spacer(modifier = Modifier.size(13.dp))
         Text(text = "Menerima Diri pt 1", fontSize = 12.sp, fontWeight = FontWeight.Bold, fontFamily = inter, modifier = Modifier.padding(start = 25.dp))
@@ -43,7 +45,7 @@ fun MenerimaDiriScreen(
             gambarnya = R.drawable.gambarmenrrimadiri1,
             judulnya = "Hirup Nafas Perlahan",
             waktunya = "15 menit",
-            onClick = {navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route)},
+            onClick = {navController.navigate(BottonBarScreen.DetailHirupNapasPerlahan.route)},
             lebar = 334,
             cheklish = painterResource(id = R.drawable.cheklish),
             alpha = 0.0f,
@@ -54,7 +56,7 @@ fun MenerimaDiriScreen(
             gambarnya = R.drawable.gambarmenrrimadiri2,
             judulnya = "Dengarkan Musik Tenang",
             waktunya = "3 menit",
-            onClick = {},
+            onClick = {navController.navigate(BottonBarScreen.DetailDengarkanMusikTenang.route)},
             lebar = 334,
             cheklish = painterResource(id = R.drawable.cheklish),
             alpha = 0.0f,

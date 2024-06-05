@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.homepage.journey.kamupastibisa
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +35,7 @@ fun KamuPastiBisaScreenSatu(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.Journey.route) }
         )
         Spacer(modifier = Modifier.size(13.dp))
         Text(text = "Kamu Pasti Bisa pt 1", fontSize = 12.sp, fontWeight = FontWeight.Bold, fontFamily = inter, modifier = Modifier.padding(start = 25.dp))
@@ -43,7 +45,7 @@ fun KamuPastiBisaScreenSatu(
             gambarnya = R.drawable.gambarkamupastibisadepansatu,
             judulnya = "Perenggangan Otot",
             waktunya = "1 menit",
-            onClick = {navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route)},
+            onClick = {navController.navigate(BottonBarScreen.DetailPereganganOtot.route)},
             lebar = 334,
             cheklish = painterResource(id = R.drawable.cheklish),
             alpha = 0.0f,
@@ -54,7 +56,7 @@ fun KamuPastiBisaScreenSatu(
             gambarnya = R.drawable.gambarkamupastibisadepandua,
             judulnya = "Curhat Pada Diri Sendiri",
             waktunya = "10 menit",
-            onClick = {},
+            onClick = {navController.navigate(BottonBarScreen.DetailCurhatPadaDiriSendiri.route)},
             lebar = 334,
             cheklish = painterResource(id = R.drawable.cheklish),
             alpha = 0.0f,

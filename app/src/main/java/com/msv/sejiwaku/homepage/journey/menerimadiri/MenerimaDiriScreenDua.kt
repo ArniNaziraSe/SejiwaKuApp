@@ -54,7 +54,7 @@ import com.msv.sejiwaku.navigator.BottonBarScreen
                 gambarnya = R.drawable.gambarmenrrimadiri2,
                 judulnya = "Dengarkan Musik Tenang",
                 waktunya = "3 menit",
-                onClick = {},
+                onClick = {navController.navigate(BottonBarScreen.DetailDengarkanMusikTenang.route)},
                 lebar = 334,
                 cheklish = painterResource(id = R.drawable.cheklish),
                 alpha = 0f,

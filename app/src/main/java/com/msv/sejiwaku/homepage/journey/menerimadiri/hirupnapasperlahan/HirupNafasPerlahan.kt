@@ -47,6 +47,7 @@ fun HirupNafasPerlahan(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route) }
         )
         Spacer(modifier = Modifier.size(11.dp))
         Text(text = "Hirup Nafas Perlahan", fontFamily = inter, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 37.dp))
@@ -84,7 +85,7 @@ fun HirupNafasPerlahan(
             horizontalAlignment = Alignment.End
         ) {
             Surface(
-                onClick = {}
+                onClick = {navController.navigate(BottonBarScreen.DetailMenerimaDiriScreenDua.route)}
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.lanjuthirupnapasperlahan),

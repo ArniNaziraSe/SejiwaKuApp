@@ -1,5 +1,6 @@
 package com.msv.sejiwaku.bagianonboardingnya
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,9 +15,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,14 +31,24 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
 import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.navigator.Urutan
 import com.msv.sejiwaku.ui.theme.inter
+import kotlinx.coroutines.launch
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun OnboardingHasil(
     navController: NavController
 ) {
+    val loggedln by mutableStateOf(false)
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
     val namafont = inter
     Column(
         modifier = Modifier.fillMaxSize()
@@ -83,9 +99,12 @@ fun OnboardingHasil(
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
                 onClick = {
+                    coroutineScope.launch {
+                        dataStore.saveStatus(true)
+                    }
                     navController.navigate(Urutan.HOMEBAR) {
                     popUpTo(BagianLoginDanTemannya.HasilOnboarding.route) {
-                        inclusive = false
+                        inclusive = true
                     }
                 }
                           /*navController.navigate(Graph.ISI)*/

@@ -189,7 +189,7 @@ fun LoginPage(
                         }
                         navController.navigate(BagianLoginDanTemannya.OnboardingPertama.route) {
                             popUpTo(BagianLoginDanTemannya.Login.route) {
-                                inclusive = false
+                                inclusive = true
                             }
                         }
                     }

@@ -101,7 +101,7 @@ fun JourneyScreen(
                     gambar = R.drawable.journey01,
                     judul = "Menerima Diri pt 1",
                     waktu = "Durasi 3 hari",
-                    onClick = {navController.navigate(BottonBarScreen.Detail.route)}
+                    onClick = {navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route)}
                 )
                 Spacer(modifier = Modifier.size(7.dp))
                 Text(text = "Kamu Pasti Bisa", fontSize = 9.sp, fontWeight = FontWeight.Bold, color = warnaabuabu, modifier = Modifier.padding(start = 5.dp))
@@ -110,7 +110,7 @@ fun JourneyScreen(
                     gambar = R.drawable.journey11,
                     judul = "Kamu Pasti Bisa pt 1",
                     waktu = "Durasi 3 hari",
-                    onClick = {navController.navigate(BottonBarScreen.Detail.route)}
+                    onClick = {navController.navigate(BottonBarScreen.DetailKamuPastiBisaSatu.route)}
                 )
             }
         }

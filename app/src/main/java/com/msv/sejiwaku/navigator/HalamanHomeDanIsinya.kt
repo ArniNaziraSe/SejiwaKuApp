@@ -12,7 +12,17 @@ import com.msv.sejiwaku.homepage.journalscreen.JournalScreen
 import com.msv.sejiwaku.homepage.journey.JourneyScreen
 import com.msv.sejiwaku.homepage.konseling.KonselingScreen
 import com.msv.sejiwaku.homepage.detailyangbelumjadi.Pt1tes
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.KamuPastiBisaScreenDua
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.KamuPastiBisaScreenSatu
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.KamuPastiBisaScreenTiga
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.curhatpadadirisendiri.CurhatPadaDiriSendiri
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.curhatpadadirisendiri.musik.MusikDua
+import com.msv.sejiwaku.homepage.journey.kamupastibisa.perengganganotot.PerengganganOtot
 import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreen
+import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreenDua
+import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreenTiga
+import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.DengarkanMusikTenang
+import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.musik.MusikStatu
 import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
 
 @Composable
@@ -44,7 +54,42 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
             MenerimaDiriScreen(navController)
         }
         composable(route = BottonBarScreen.DetailMenerimaDiript1.route){
+            MenerimaDiriScreen(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailHirupNapasPerlahan.route){
             HirupNafasPerlahan(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailMenerimaDiriScreenDua.route){
+            MenerimaDiriScreenDua(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailMenerimaDiriScreenTiga.route){
+            MenerimaDiriScreenTiga(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailDengarkanMusikTenang.route){
+            DengarkanMusikTenang(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailMusikSatu.route){
+            MusikStatu(navController = navController)
+        }
+
+
+        composable(route = BottonBarScreen.DetailKamuPastiBisaSatu.route){
+            KamuPastiBisaScreenSatu(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailKamuPastiBisaDua.route){
+            KamuPastiBisaScreenDua(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailKamuPastiBisaTiga.route){
+            KamuPastiBisaScreenTiga(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailPereganganOtot.route){
+            PerengganganOtot(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailCurhatPadaDiriSendiri.route){
+            CurhatPadaDiriSendiri(navController = navController)
+        }
+        composable(route = BottonBarScreen.DetailMusikDua.route){
+            MusikDua(navController = navController)
         }
         detailpertama(navController = navController)
     }

@@ -19,9 +19,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,8 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
 import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.inter
+import kotlinx.coroutines.launch
 
 data class OnSatu(
     val judul1: String,
@@ -38,9 +43,26 @@ data class OnSatu(
     val gambar1 : Int,
 )
 
+
+
 @Composable
 fun HalamanOnboarding1(navController: NavController) {
-    val perpindahan = {navController.navigate(BagianLoginDanTemannya.OnboardingKedua.route)}
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val perpindahan = {
+        coroutineScope.launch {
+            dataStore.saveStatus(true)
+        }
+        navController.navigate(BagianLoginDanTemannya.OnboardingKedua.route) {
+            popUpTo(BagianLoginDanTemannya.OnboardingPertama.route) {
+                inclusive = true
+            }
+        }
+    }
     val namafont = inter
     val ukuran = 97.dp
     Column {
@@ -159,7 +181,22 @@ fun HalamanOnboarding1(navController: NavController) {
 ////////////////////////////////////////
 @Composable
 fun HalamanOnboarding2(navController: NavController) {
-    val perpindahan = {navController.navigate(BagianLoginDanTemannya.OnboardingKetiga.route)}
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val perpindahan = {
+        coroutineScope.launch {
+            dataStore.saveStatus(true)
+        }
+        navController.navigate(BagianLoginDanTemannya.OnboardingKetiga.route){
+            popUpTo(BagianLoginDanTemannya.OnboardingKedua.route) {
+                inclusive = true
+            }
+        }
+    }
     val namafont = inter
     val ukuran = 97.dp
     Column {
@@ -279,7 +316,22 @@ fun HalamanOnboarding2(navController: NavController) {
 
 @Composable
 fun HalamanOnboarding3(navController: NavController) {
-    val perpindahan = {navController.navigate(BagianLoginDanTemannya.HasilOnboarding.route)}
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val perpindahan = {
+        coroutineScope.launch {
+            dataStore.saveStatus(true)
+        }
+        navController.navigate(BagianLoginDanTemannya.HasilOnboarding.route){
+            popUpTo(BagianLoginDanTemannya.OnboardingKetiga.route) {
+                inclusive = true
+            }
+        }
+    }
     val namafont = inter
     val ukuran = 97.dp
     Column {

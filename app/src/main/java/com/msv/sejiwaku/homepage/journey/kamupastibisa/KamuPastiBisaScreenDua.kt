@@ -19,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.BagianTombolMenerimaDiriPt1
 import com.msv.sejiwaku.ui.theme.inter
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @Composable
 fun KamuPastiBisaScreenDua(
@@ -51,9 +52,9 @@ fun KamuPastiBisaScreenDua(
         Spacer(modifier = Modifier.size(11.dp))
         BagianTombolMenerimaDiriPt1(
             gambarnya = R.drawable.gambarmenrrimadiri2,
-            judulnya = "Dengarkan Musik Tenang",
+            judulnya = "Curhat Pada Diri Sendiri",
             waktunya = "3 menit",
-            onClick = {},
+            onClick = {navController.navigate(BottonBarScreen.DetailCurhatPadaDiriSendiri.route)},
             lebar = 334,
             cheklish = painterResource(id = R.drawable.cheklish),
             alpha = 0f,

@@ -28,6 +28,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.WaktuTimer
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -60,16 +61,16 @@ fun CurhatPadaDiriSendiri(
             )
         }
         Spacer(modifier = Modifier.size(51.dp))
-        Text(text = "Haii kamu pasti lelah setelah melakukan aktifitasmu, yuk luangin waktu sejenak buat dirimu sendiri sambil bicara dengan diri sendiri.\n" +
-                "“IHH APAAN ANEHH” Enggak kok gak aneh sama sekali justru karena hal ini kamu bisa semakin mengenali dirimu sendiri. Bebas mau sambil rebahan, sambil merem atau sambil peluk barang kesayanganmu. \n" +
-                "Kamu harus bangga sama dirimu karena selalu kuat sampai hari ini.", fontSize = 12.sp, fontFamily = inter, modifier = Modifier.padding(start = 30.dp)
+        Text(text = "Haii kamu pasti lelah setelah melakukan aktifitasmu, yuk luangin waktu sejenak buat dirimu sendiri sambil bicara dengan diri sendiri." +
+                "“IHH APAAN ANEHH” Enggak kok gak aneh sama sekali justru karena hal ini kamu bisa semakin mengenali dirimu sendiri. Bebas mau sambil rebahan, sambil merem atau sambil peluk barang kesayanganmu." +
+                "Kamu harus bangga sama dirimu karena selalu kuat sampai hari ini.", fontSize = 12.sp, fontFamily = inter, modifier = Modifier.padding(start = 30.dp, end = 20.dp)
         )
         Spacer(modifier = Modifier.size(60.dp))
         WaktuTimer(timer = "10 : 00", colortext = Color.Black, colorbackground = toska, colorborder = Color.White, ukuranborder = 2, gambar = painterResource(
             id = R.drawable.buttonmulai
         )
         ) {
-            //navigator
+            navController.navigate(BottonBarScreen.DetailMusikDua.route)
         }
     }
 }

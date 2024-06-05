@@ -2,6 +2,7 @@ package com.msv.sejiwaku.homepage.journey.kamupastibisa.perengganganotot
 
 import android.media.MediaPlayer
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +29,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.journey.menerimadiri.component.WaktuTimer
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -45,6 +47,7 @@ fun PerengganganOtot(
             modifier = Modifier
                 .size(40.dp)
                 .padding(start = 14.dp, top = 5.dp)
+                .clickable { navController.navigate(BottonBarScreen.DetailKamuPastiBisaSatu.route) }
         )
         Spacer(modifier = Modifier.size(11.dp))
         Text(text = "Perenggangan Otot", fontFamily = inter, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 37.dp))
@@ -64,7 +67,7 @@ fun PerengganganOtot(
                 "1. Berdirilah di tengah-tengah pintu yang terbuka.\n" +
                 "2. Peganglah kedua sisi kosen pintu.\n" +
                 "3. Condongkan tubuh ke depan pintu dengan melangkahkan salah satu kaki kedepan hingga melewati dada dan bahu.\n" +
-                "4. Tahan selama 30 detik kemudian ulangi. Anda memang perlu rutin melakukan stretching, tapi hati-hati dengan risiko\n", fontSize = 12.sp, fontFamily = inter, modifier = Modifier.padding(start = 30.dp)
+                "4. Tahan selama 30 detik kemudian ulangi. Anda memang perlu rutin melakukan stretching, tapi hati-hati dengan risiko\n", fontSize = 12.sp, fontFamily = inter, modifier = Modifier.padding(start = 30.dp, end = 20.dp)
         )
         Spacer(modifier = Modifier.size(60.dp))
         WaktuTimer(timer = "00 : 30", colortext = Color.Black, colorbackground = toska, colorborder = Color.White, ukuranborder = 2, gambar = painterResource(
@@ -79,7 +82,7 @@ fun PerengganganOtot(
             horizontalAlignment = Alignment.End
         ) {
             Surface(
-                onClick = {}
+                onClick = {navController.navigate(BottonBarScreen.DetailKamuPastiBisaDua.route)}
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.lanjuthirupnapasperlahan),
