@@ -26,7 +26,9 @@ import androidx.compose.ui.unit.sp
 import com.msv.sejiwaku.R
 
 @Composable
-fun MyDailyJurnal() {
+fun MyDailyJurnal(
+    onClick: ()->Unit
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -36,6 +38,7 @@ fun MyDailyJurnal() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Surface(
+                onClick = onClick,
                 modifier = Modifier
                     .height(108.dp)
                     .width(339.dp),
@@ -79,5 +82,5 @@ fun MyDailyJurnal() {
 @Preview
 @Composable
 private fun PreviewDaily() {
-    MyDailyJurnal()
+    MyDailyJurnal(onClick = {})
 }

@@ -25,6 +25,13 @@ import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.Denga
 import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.musik.MusikStatu
 import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
 import com.msv.sejiwaku.homepage.konseling.detailscreen.DetailScreenKonseling
+import com.msv.sejiwaku.inJurnal.screen.JournalContent1
+import com.msv.sejiwaku.inJurnal.screen.Screen4
+import com.msv.sejiwaku.inJurnal.screen.Screen5
+import com.msv.sejiwaku.inJurnal.screen.Screen6
+import com.msv.sejiwaku.inJurnal.screen.journalScreen1
+import com.msv.sejiwaku.inJurnal.screen.journalScreen2
+import com.msv.sejiwaku.inJurnal.screen.journalScreen3
 
 @Composable
 fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
@@ -95,6 +102,25 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.DetailMusikDua.route){
             MusikDua(navController = navController)
         }
+        composable(route = BottonBarScreen.JournalScreen1.route){
+            journalScreen1()
+        }
+        composable(route = BottonBarScreen.JournalScreen2.route){
+            journalScreen2()
+        }
+        composable(route = BottonBarScreen.JournalScreen3.route){
+            journalScreen3()
+        }
+        composable(route = BottonBarScreen.Screen4.route){
+            Screen4()
+        }
+        composable(route = BottonBarScreen.Screen5.route){
+            Screen5()
+        }
+        composable(route = BottonBarScreen.Screen6.route){
+            Screen6()
+        }
+
         detailpertama(navController = navController)
     }
 }

@@ -57,7 +57,9 @@ fun JournalScreen(
             Spacer(modifier = Modifier.size(69.dp))
             LihatRiwayatJurnal()
             Spacer(modifier = Modifier.size(15.dp))
-            MyDailyJurnal()
+            MyDailyJurnal(
+                onClick = {navController.navigate(BottonBarScreen.JournalScreen1.route)}
+            )
             Spacer(modifier = Modifier.size(21.dp))
             Column(
                 modifier = Modifier.padding(start = 15.dp)

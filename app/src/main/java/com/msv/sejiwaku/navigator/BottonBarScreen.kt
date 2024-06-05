@@ -81,5 +81,30 @@ sealed class BottonBarScreen(
         route = "DetailMusikDua",
         1
     )
+    object JournalScreen1 : BottonBarScreen(
+        route = "JournalScreen1",
+        1
+    )
+    object JournalScreen2 : BottonBarScreen(
+        route = "JournalScreen2",
+        1
+    )
+    object JournalScreen3 : BottonBarScreen(
+        route = "JournalScreen3",
+        1
+    )
+    object Screen4 : BottonBarScreen(
+        route = "Screen4",
+        1
+    )
+    object Screen5 : BottonBarScreen(
+        route = "Screen5",
+        1
+    )
+    object Screen6 : BottonBarScreen(
+        route = "Screen6",
+        1
+    )
+
 }
 

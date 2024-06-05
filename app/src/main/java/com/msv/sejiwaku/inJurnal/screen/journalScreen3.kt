@@ -39,19 +39,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
+import com.msv.sejiwaku.navigator.BottonBarScreen
 
 @Composable
 fun journalScreen3() {
     Scaffold(
         topBar = {},
         content = {paddingValues ->
-            JournalContent3(modifier = Modifier.padding(paddingValues))
+            JournalContent3(modifier = Modifier.padding(paddingValues),navController = rememberNavController())
         }
     )
 }
 
 @Composable
-fun JournalContent3(modifier: Modifier = Modifier) {
+fun JournalContent3(modifier: Modifier = Modifier,navController: NavController) {
     var textState by remember { mutableStateOf(TextFieldValue()) }
 
     Column(
@@ -77,7 +78,7 @@ fun JournalContent3(modifier: Modifier = Modifier) {
             modifier = Modifier.align(Alignment.End)
         ) {
             Text(text = "Finish", fontWeight = FontWeight.Medium, color = Color(0xFF33B9AC),modifier = Modifier.padding(top = 12.dp))
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(BottonBarScreen.Screen4.route) }) {
                 Icon(imageVector = Icons.Default.ArrowForwardIos, contentDescription = "finish")
             }
         }
