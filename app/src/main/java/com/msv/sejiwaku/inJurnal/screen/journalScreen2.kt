@@ -61,6 +61,7 @@ fun JournalContent2(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Apa yang kamu ketahui tentang dirimu sendiri?",
                 fontSize = 18.sp,

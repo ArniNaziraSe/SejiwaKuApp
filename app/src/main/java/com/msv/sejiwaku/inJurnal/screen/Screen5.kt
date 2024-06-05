@@ -1,7 +1,6 @@
 package com.msv.sejiwaku.inJurnal.screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +33,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @Composable
-fun Screen4(modifier: Modifier = Modifier) {
+fun Screen5() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -74,14 +74,14 @@ fun Screen4(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(32.dp))
         LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.fillMaxWidth()) {
             item {
-                JournalOption1(
+                JournalOption(
                     iconId = R.drawable.write_jurnal,
                     title = "Menulis",
                     description = "Tulis apa yang ingin kamu ..."
                 )
             }
             item {
-                JournalOption1(
+                JournalOption(
                     iconId = R.drawable.gambar_jurnal,
                     title = "Gambar",
                     description = "Gambar apa yang ingin kamu ..."
@@ -91,22 +91,73 @@ fun Screen4(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(48.dp))
         Text(text = "My Daily Journal", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         Text(text = "Pilih salah satu jurnal dan mulai melanjutkan jurnal yang telah kamu buat", fontSize = 12.sp)
-
         Spacer(modifier = Modifier.height(16.dp))
-        Box(
+        OutlinedButton(
+            onClick = { /*TODO*/ },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
-                .background(Color.White),
-            contentAlignment = Alignment.Center
+                .padding(15.dp),
+            shape = RoundedCornerShape(8.dp)
         ) {
-            Text(text = "Daily Journalmu masih kosong nih", color = Color.Gray)
+            Row(
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Column {
+                    Text(text = "Apakah aku menjadi lebih baik")
+                    Text(
+                        text = "Curahkan segala perasaan yang ada dalam dirimu",
+                        fontSize = 10.sp,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        modifier = Modifier.width(200.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.width(40.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.write_jurnal),
+                    contentDescription = "daily riwayat",
+                    modifier = Modifier.padding(top = 12.dp)
+                )
+            }
+        }
+        OutlinedButton(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Row(
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Column {
+                    Text(
+                        text = "Bagaimana bisa menjadi lebih baik",
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1,
+                        modifier = Modifier.width(200.dp)
+                    )
+                    Text(
+                        text = "Akan selalu ada jalan untuk dirimu, jangan pernah takut untuk mengetahui potensimu",
+                        fontSize = 10.sp,
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 2,
+                        modifier = Modifier.width(200.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.width(40.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.gambar_jurnal),
+                    contentDescription = "daily riwayat",
+                    modifier = Modifier.padding(top = 12.dp)
+                )
+            }
         }
     }
 }
 
 @Composable
-fun JournalOption1(iconId: Int, title: String, description: String) {
+fun JournalOption(iconId: Int, title: String, description: String) {
     Card(
         shape = RoundedCornerShape((8.dp)),
         modifier = Modifier
@@ -131,8 +182,8 @@ fun JournalOption1(iconId: Int, title: String, description: String) {
 
 @Preview
 @Composable
-private fun Screen4Preview() {
+private fun Screen5Preview() {
     SejiwakuTheme {
-        Screen4()
+        Screen5()
     }
 }
