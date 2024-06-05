@@ -24,6 +24,7 @@ import com.msv.sejiwaku.homepage.journey.menerimadiri.MenerimaDiriScreenTiga
 import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.DengarkanMusikTenang
 import com.msv.sejiwaku.homepage.journey.menerimadiri.dengarkanmusiktenang.musik.MusikStatu
 import com.msv.sejiwaku.homepage.journey.menerimadiri.hirupnapasperlahan.HirupNafasPerlahan
+import com.msv.sejiwaku.homepage.konseling.detailscreen.DetailScreenKonseling
 
 @Composable
 fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
@@ -38,7 +39,7 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.Konseling.route){
             KonselingScreen(
                 navController = navController,
-                onClik = {navController.navigate(Urutan.DETAILHOMESATU)}
+                onClik = {navController.navigate(BottonBarScreen.DetailKonseling.route)}
             )
         }
         composable(route = BottonBarScreen.Journal.route){
@@ -49,6 +50,9 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
                 navController = navController,
                 onClick = {navController.navigate(Urutan.DETAILHOMESATU)}
             )
+        }
+        composable(route = BottonBarScreen.DetailKonseling.route){
+            DetailScreenKonseling(navController)
         }
         composable(route = BottonBarScreen.Detail.route){
             MenerimaDiriScreen(navController)

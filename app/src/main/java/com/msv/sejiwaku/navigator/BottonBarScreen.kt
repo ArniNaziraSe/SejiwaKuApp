@@ -16,6 +16,10 @@ sealed class BottonBarScreen(
         route = "KONSELING",
         gambar = R.drawable.bottonbarkonseling
     )
+    object DetailKonseling : BottonBarScreen(
+        route = "DetailKonseling",
+        1
+    )
     object Journal : BottonBarScreen(
         route = "JOURNAL",
         gambar = R.drawable.bottonbarjurnal

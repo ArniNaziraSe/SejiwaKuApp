@@ -205,7 +205,7 @@ fun KonselingScreen(
                 ) {
                     ColumnKonselingPertama(
                         rating = 4.0,
-                        screen = { Urutan.DETAILHOMESATU },
+                        screen = onClik,
                         gambar = R.drawable.fotokonseling11,
                         nama = "Rudmi Rayan",
                         deskripsi = "Berpengalaman dalam dunia psikologi selama 2,5 tahun. Dapat menyelesaikan berbagai masalah seperti depresi berlebih."
