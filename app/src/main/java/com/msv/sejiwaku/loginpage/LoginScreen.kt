@@ -2,7 +2,6 @@
 
 package com.msv.sejiwaku.loginpage
 
-import android.media.MediaPlayer
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -45,15 +44,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.datastore.core.DataStore
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
-import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
+import com.msv.sejiwaku.sda.navigator.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -71,7 +68,7 @@ fun LoginPage(
         val sharedPreferencesManager = remember {
             SharedPreferencesManager(context)
         }
-        val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+        val dataStore = com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua(context)
 
         val namafont = inter
         var emaillogin by remember {
@@ -184,9 +181,6 @@ fun LoginPage(
                     } else {
                         sharedPreferencesManager.emaillogin = emaillogin
                         sharedPreferencesManager.passwordlogin = passwordlogin
-                        coroutineScope.launch {
-                            dataStore.saveStatus(true)
-                        }
                         navController.navigate(BagianLoginDanTemannya.OnboardingPertama.route) {
                             popUpTo(BagianLoginDanTemannya.Login.route) {
                                 inclusive = true

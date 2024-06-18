@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
-import com.msv.sejiwaku.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.BottonBarScreen
 
 @Composable
 fun journalScreen3() {

@@ -32,10 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.loginpage.logindata.SharedPreferencesManager
-import com.msv.sejiwaku.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
+import com.msv.sejiwaku.sda.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
 import com.msv.sejiwaku.ui.theme.inter
-import kotlinx.coroutines.launch
 
 data class OnSatu(
     val judul1: String,
@@ -52,11 +52,11 @@ fun HalamanOnboarding1(navController: NavController) {
     val sharedPreferencesManager = remember {
         SharedPreferencesManager(context)
     }
-    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val dataStore = DataStoreJourneyDua(context)
     val perpindahan = {
-        coroutineScope.launch {
-            dataStore.saveStatus(true)
-        }
+//        coroutineScope.launch {
+//            dataStore.saveStatus(true)
+//        }
         navController.navigate(BagianLoginDanTemannya.OnboardingKedua.route) {
             popUpTo(BagianLoginDanTemannya.OnboardingPertama.route) {
                 inclusive = true
@@ -186,11 +186,11 @@ fun HalamanOnboarding2(navController: NavController) {
     val sharedPreferencesManager = remember {
         SharedPreferencesManager(context)
     }
-    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val dataStore = DataStoreJourneyDua(context)
     val perpindahan = {
-        coroutineScope.launch {
-            dataStore.saveStatus(true)
-        }
+//        coroutineScope.launch {
+//            dataStore.saveStatus(true)
+//        }
         navController.navigate(BagianLoginDanTemannya.OnboardingKetiga.route){
             popUpTo(BagianLoginDanTemannya.OnboardingKedua.route) {
                 inclusive = true
@@ -321,11 +321,11 @@ fun HalamanOnboarding3(navController: NavController) {
     val sharedPreferencesManager = remember {
         SharedPreferencesManager(context)
     }
-    val dataStore = com.msv.sejiwaku.loginpage.logindata.DataStore(context)
+    val dataStore = DataStoreJourneyDua(context)
     val perpindahan = {
-        coroutineScope.launch {
-            dataStore.saveStatus(true)
-        }
+//        coroutineScope.launch {
+//            dataStore.saveStatus(true)
+//        }
         navController.navigate(BagianLoginDanTemannya.HasilOnboarding.route){
             popUpTo(BagianLoginDanTemannya.OnboardingKetiga.route) {
                 inclusive = true
