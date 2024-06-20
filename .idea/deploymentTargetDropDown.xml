@@ -2,10 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PreviewHirupNafasPerlahan">
-        <State />
-      </entry>
-      <entry key="PreviewHirupNafasPerlahan (1)">
+      <entry key="PreviewEditProfile">
         <State />
       </entry>
       <entry key="PreviewMenerimaDiriScreen">
@@ -15,6 +12,9 @@
         <State />
       </entry>
       <entry key="PreviewMenerimaDiriScreen (2)">
+        <State />
+      </entry>
+      <entry key="PreviewProfileCircular">
         <State />
       </entry>
       <entry key="app">

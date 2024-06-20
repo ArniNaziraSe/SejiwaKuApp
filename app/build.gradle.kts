@@ -87,4 +87,7 @@ dependencies {
 
     // BottomNavigation
     implementation ("androidx.compose.material:material:1.4.2")
+
+    // coil
+    implementation ("io.coil-kt:coil-compose:2.0.0-rc01")
 }

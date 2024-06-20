@@ -27,7 +27,7 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.R
 
 @Composable
-fun ProfileCircular(
+fun ProfileCircularEdit(
     profileurl:String,
     edit:Int = 0,
     onClickedit:()-> Unit
@@ -79,6 +79,19 @@ fun ProfileCircular(
                     modifier = Modifier
                         .size(150.dp)
                         .clip(CircleShape)
+                )
+            }
+            // icon edit
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 115.dp, start = 120.dp)
+                    .clickable { onClickedit() },
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(painter = painterResource(id = edit), contentDescription = "Gambar edit foto", modifier = Modifier
+                    .size(35.dp)
+                    .padding()
                 )
             }
         }
