@@ -46,7 +46,7 @@ fun ProfileCircular(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(painter = painterResource(id = R.drawable.profileellipse), contentDescription = "gambar ellipse", modifier = Modifier
-                    .size(180.dp)
+                    .size(222.dp)
                 )
             }
             // iconnya
@@ -77,7 +77,7 @@ fun ProfileCircular(
                     placeholder = painterResource(id = R.drawable.cheklish),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(150.dp)
+                        .size(190.dp)
                         .clip(CircleShape)
                 )
             }

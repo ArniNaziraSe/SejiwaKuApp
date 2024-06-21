@@ -12,3 +12,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val Tosca = Color(0xFF33B9AC)
+val Hitam = Color(0xFF000000)
+val abu_abu = Color(0xFFA0A0A0)
