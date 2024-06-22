@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "737730310863",
+    "project_id": "sejiwaku-1a688",
+    "storage_bucket": "sejiwaku-1a688.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737730310863:android:391012fa3becec234ebdba",
+        "android_client_info": {
+          "package_name": "com.msv.sejiwaku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY5OQ7pI-3qlVGm3KzkCraAi2pYOP9VhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
