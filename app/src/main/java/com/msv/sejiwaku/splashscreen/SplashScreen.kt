@@ -13,13 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import com.msv.sejiwaku.sda.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BagianLoginDanTemannya
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.sda.logindata.DataStoreLogin
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
-import com.msv.sejiwaku.sda.navigator.Urutan
+import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 
 @Composable
 fun SplashScreen(

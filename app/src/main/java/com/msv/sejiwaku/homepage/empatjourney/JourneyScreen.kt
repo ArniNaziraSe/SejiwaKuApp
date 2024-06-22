@@ -26,7 +26,7 @@ import com.msv.sejiwaku.homepage.empatjourney.component.TemplateIsiJourney
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
 //import com.msv.sejiwaku.halamanbottonbar_dan_appbar.navigation.HalamanIsi
 import com.msv.sejiwaku.ui.theme.inter
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import androidx.compose.runtime.collectAsState
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
 

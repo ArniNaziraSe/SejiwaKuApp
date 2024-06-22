@@ -29,7 +29,7 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.empatjourney.menerimadiri.component.WaktuTimer
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

@@ -31,8 +31,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
-import com.msv.sejiwaku.sda.navigator.BagianLoginDanTemannya
-import com.msv.sejiwaku.sda.navigator.Urutan
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.sda.logindata.DataStoreLogin
 import com.msv.sejiwaku.ui.theme.inter
 import kotlinx.coroutines.launch

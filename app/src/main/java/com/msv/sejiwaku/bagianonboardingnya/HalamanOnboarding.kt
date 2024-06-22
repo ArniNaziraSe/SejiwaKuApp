@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
-import com.msv.sejiwaku.sda.navigator.BagianLoginDanTemannya
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BagianLoginDanTemannya
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
 import com.msv.sejiwaku.ui.theme.inter
 

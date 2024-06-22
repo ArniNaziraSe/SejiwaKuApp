@@ -26,7 +26,7 @@ import com.msv.sejiwaku.homepage.tigajournalscreen.component.LihatRiwayatJurnal
 import com.msv.sejiwaku.homepage.tigajournalscreen.component.LihatSemua
 import com.msv.sejiwaku.homepage.tigajournalscreen.component.MyDailyJurnal
 import com.msv.sejiwaku.homepage.tigajournalscreen.component.TopikDariSejiwaku
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 @Composable
 fun JournalScreen(

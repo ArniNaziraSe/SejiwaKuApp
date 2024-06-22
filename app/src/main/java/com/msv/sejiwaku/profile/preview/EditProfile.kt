@@ -1,4 +1,4 @@
-package com.msv.sejiwaku.profile
+package com.msv.sejiwaku.profile.preview
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -9,17 +9,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.profile.component.PerpindahanProfilSatu
 import com.msv.sejiwaku.profile.component.ProfileCircularEdit
 import com.msv.sejiwaku.profile.component.TeksInput
 import com.msv.sejiwaku.profile.component.TeksInputVisibility
+import com.msv.sejiwaku.ui.theme.abu_abu_muda
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 
 @Composable
-fun EditProfile() {
+fun EditProfile(
+    navController: NavController
+) {
     // ext
     // var nama by remember {mustableStateOf("")}
     Column(
@@ -27,7 +35,21 @@ fun EditProfile() {
     ) {
         Box {
             Column {
-                Spacer(modifier = Modifier.size(70.dp))
+                Spacer(modifier = Modifier.size(20.dp))
+                PerpindahanProfilSatu(
+                    onClicksatu = {
+                        navController.navigate(BottonBarScreen.Profil.route) {
+                            popUpTo(BottonBarScreen.ProfilEdit.route) {
+                                inclusive = true
+                            }
+                        }
+
+                                  },
+                    onClickdua = { /*TODO*/ },
+                    colorsatu = abu_abu_muda,
+                    colordua = Color.White
+                )
+                Spacer(modifier = Modifier.size(30.dp))
                 ProfileCircularEdit(
                     profileurl = "https://rahmad1111.github.io/filenya/logo.jpg",
                     onClickedit = {},
@@ -58,7 +80,9 @@ fun EditProfile() {
 
                 }
             }
-            Image(painter = painterResource(id = R.drawable.savebuttonprofile), contentDescription = "tombol save", modifier = Modifier.padding(top = 60.dp, start = 250.dp).size(width = 71.dp, height = 40.dp))
+            Image(painter = painterResource(id = R.drawable.savebuttonprofile), contentDescription = "tombol save", modifier = Modifier
+                .padding(top = 80.dp, start = 250.dp)
+                .size(width = 71.dp, height = 40.dp))
         }
     }
 }
@@ -66,5 +90,5 @@ fun EditProfile() {
 @Preview(showBackground = true)
 @Composable
 private fun PreviewEditProfile() {
-    EditProfile()
+    EditProfile(navController = rememberNavController())
 }

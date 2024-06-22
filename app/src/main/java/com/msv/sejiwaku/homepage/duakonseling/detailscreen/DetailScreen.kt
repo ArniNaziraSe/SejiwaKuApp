@@ -33,7 +33,7 @@ import com.msv.sejiwaku.homepage.duakonseling.component.Bintang
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.Garis
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.Komentar
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.LazyMaps
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
 

@@ -33,8 +33,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
-import com.msv.sejiwaku.sda.navigator.HomeNavigasi
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.HomeNavigasi
 import com.msv.sejiwaku.sda.navigator.topbardanbottonbarhomebar.visibilitytopbardanbottonbar.shouldShowBottomBar
 import com.msv.sejiwaku.ui.theme.inter
 
