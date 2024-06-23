@@ -19,6 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.chat.component.BottonKembaliCircular
 import com.msv.sejiwaku.chat.component.KomponenIsi
@@ -28,10 +30,14 @@ import com.msv.sejiwaku.ui.theme.abu_abu_muda
 import com.msv.sejiwaku.ui.theme.inter
 
 @Composable
-fun GaleriChat() {
+fun GaleriChat(
+    navController: NavController
+) {
     Scaffold(
         floatingActionButton = {
-            Image(painter = painterResource(id = R.drawable.floatingchat), contentDescription = "floatingchat", modifier = Modifier.size(50.dp).clickable {  })
+            Image(painter = painterResource(id = R.drawable.floatingchat), contentDescription = "floatingchat", modifier = Modifier
+                .size(50.dp)
+                .clickable { })
         }
     ) {valuepadding ->
         Column(
@@ -43,7 +49,7 @@ fun GaleriChat() {
 
             }
             Text(text = "Chat dengan Dokter Andalanmu", fontSize = 16.sp, fontWeight = FontWeight.Bold, fontFamily = inter, color = Tosca, modifier = Modifier.padding(start = 22.dp, top = 10.dp, bottom = 10.dp))
-            KomponenIsi()
+            KomponenIsi(navController = navController)
         }
     }
 }
@@ -52,6 +58,8 @@ fun GaleriChat() {
 @Composable
 private fun PreviewGaleriChat() {
     SejiwakuTheme {
-        GaleriChat()
+        GaleriChat(
+            navController = rememberNavController()
+        )
     }
 }

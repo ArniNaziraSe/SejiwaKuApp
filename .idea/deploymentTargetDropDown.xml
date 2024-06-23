@@ -5,6 +5,9 @@
       <entry key="PreviewBottonKembaliCircular">
         <State />
       </entry>
+      <entry key="PreviewDetailChat">
+        <State />
+      </entry>
       <entry key="PreviewFooterChat">
         <State />
       </entry>
@@ -12,9 +15,6 @@
         <State />
       </entry>
       <entry key="PreviewHeaderChat">
-        <State />
-      </entry>
-      <entry key="PreviewProfile (1)">
         <State />
       </entry>
       <entry key="app">

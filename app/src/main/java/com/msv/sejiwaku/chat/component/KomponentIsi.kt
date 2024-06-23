@@ -13,12 +13,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.Tosca
 import com.msv.sejiwaku.ui.theme.abu_abu_muda
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 @Composable
-fun KomponenIsi() {
+fun KomponenIsi(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -38,7 +43,9 @@ fun KomponenIsi() {
                 profileurl = "",
                 nama = "Rudmi Rayan, M.Psi",
                 waktu = "Chat diterima",
-                onClickChat = {}
+                onClickChat = {
+                    navController.navigate(BottonBarScreen.DetailChat.route)
+                }
             )
             DaftarChat(
                 profileurl = "",
@@ -54,6 +61,8 @@ fun KomponenIsi() {
 @Composable
 private fun PreviewKomponenIsi() {
     SejiwakuTheme {
-        KomponenIsi()
+        KomponenIsi(
+            navController = rememberNavController()
+        )
     }
 }

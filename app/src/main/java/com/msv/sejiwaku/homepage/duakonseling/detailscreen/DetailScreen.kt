@@ -75,7 +75,9 @@ fun DetailScreenKonseling(
                 Text(text = "Rudmi Rayan, M.Psi", fontFamily = inter, fontWeight = FontWeight.Bold)
                 Bintang(rating = 4.0)
                 Button(
-                    onClick = {},
+                    onClick = {
+                              navController.navigate(BottonBarScreen.GaleriChat.route)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = toska),
                     shape = RoundedCornerShape(8.dp),

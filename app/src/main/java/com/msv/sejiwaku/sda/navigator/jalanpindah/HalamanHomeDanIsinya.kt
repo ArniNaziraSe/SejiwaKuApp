@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.msv.sejiwaku.chat.free.GaleriChat
+import com.msv.sejiwaku.chat.free.detail.DetailChat
 import com.msv.sejiwaku.homepage.satuhomescreen.HomeScreen
 import com.msv.sejiwaku.homepage.tigajournalscreen.JournalScreen
 import com.msv.sejiwaku.homepage.empatjourney.JourneyScreen
@@ -125,6 +127,13 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         }
         composable(route = BottonBarScreen.ProfilEdit.route){
             EditProfile(navController)
+        }
+        // bagian chat
+        composable(route = BottonBarScreen.GaleriChat.route){
+            GaleriChat(navController)
+        }
+        composable(route = BottonBarScreen.DetailChat.route){
+            DetailChat(navController)
         }
         detailpertama(navController = navController)
     }

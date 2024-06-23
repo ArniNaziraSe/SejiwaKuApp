@@ -112,5 +112,14 @@ sealed class BottonBarScreen(
         "ProfilEdit",
         1
     )
+    // bagian chat
+    object GaleriChat : BottonBarScreen(
+        "GaleriChat",
+        1
+    )
+    object DetailChat : BottonBarScreen(
+        "DetailChat",
+        1
+    )
 }
 
