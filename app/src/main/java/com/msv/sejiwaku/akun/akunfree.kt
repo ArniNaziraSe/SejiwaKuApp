@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -25,12 +28,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.akun.componentakun.KontenAkun
 import com.msv.sejiwaku.akun.componentakun.KontenPremium
+import com.msv.sejiwaku.sda.logindata.DataStoreAkunFreedanPremium
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
 import com.msv.sejiwaku.sda.logindata.DataStoreLogin
+import com.msv.sejiwaku.sda.mvvm.alert.MainViewModel
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.ui.theme.Tosca
@@ -42,6 +50,10 @@ fun Akunfree(navController: NavController) {
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     val dataStore = DataStoreLogin(context)
+    val viewModel: MainViewModel = viewModel()
+    val dataStorejournye = DataStoreJourneySatu(context)
+    val dataStorejournyee = DataStoreJourneyDua(context)
+    val dataStorefreedanpremium = DataStoreAkunFreedanPremium(context)
     Column(
         modifier = Modifier.fillMaxSize()
     ){}
@@ -111,7 +123,9 @@ fun Akunfree(navController: NavController) {
         height = 65
         )
         Column(
-            modifier = Modifier.fillMaxWidth().padding(end = 19.dp, top = 3.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 19.dp, top = 3.dp),
             horizontalAlignment = Alignment.End
         ) {
             Text(
@@ -122,15 +136,47 @@ fun Akunfree(navController: NavController) {
                 color = Tosca,
                 modifier = Modifier
                     .clickable {
-                        coroutineScope.launch {
-                            dataStore.clearStatus()
-                        }
-                        navController.navigate(Urutan.BAGIANLOGINDANTEMANNYA) {
-                            popUpTo(BottonBarScreen.Home.route) {
-                                inclusive = true
+                        viewModel.showAlert()
+
+                    }
+            )
+        }
+        if (viewModel.showDialog.value) {
+            AlertDialog(
+                onDismissRequest = { viewModel.dismissAlert() },
+                title = {
+                    Text(text = "Peringatan")
+                },
+                text = {
+                    Text(text = "Aplikasi akan ditutup saat menekan oke")
+                },
+                confirmButton = {
+                    Button(
+                        colors = ButtonDefaults.buttonColors(containerColor = Tosca),
+                        onClick = {
+                            viewModel.dismissAlert()
+                            coroutineScope.launch {
+                                dataStore.clearStatus()
+                            }
+                            coroutineScope.launch {
+                                dataStorejournye.clearStatus()
+                            }
+                            coroutineScope.launch {
+                                dataStorejournyee.clearStatus()
+                            }
+                            coroutineScope.launch {
+                                dataStorefreedanpremium.clearStatus()
+                            }
+                            navController.navigate(Urutan.BAGIANLOGINDANTEMANNYA) {
+                                popUpTo(BottonBarScreen.AkunPremium.route) {
+                                    inclusive = true
+                                }
                             }
                         }
+                    ) {
+                        Text("OK")
                     }
+                }
             )
         }
     }
