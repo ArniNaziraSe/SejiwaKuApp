@@ -38,11 +38,11 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 @Composable
-fun journalScreen3() {
+fun journalScreen3(navController: NavController) {
     Scaffold(
         topBar = {},
         content = {paddingValues ->
-            JournalContent3(modifier = Modifier.padding(paddingValues),navController = rememberNavController())
+            JournalContent3(modifier = Modifier.padding(paddingValues),navController = navController)
         }
     )
 }
@@ -115,6 +115,8 @@ fun LinedTextArea3(textState: TextFieldValue, onTextChanged: (TextFieldValue) ->
 @Composable
 private fun Screen3() {
     SejiwakuTheme {
-        journalScreen3()
+        journalScreen3(
+            navController = rememberNavController()
+        )
     }
 }

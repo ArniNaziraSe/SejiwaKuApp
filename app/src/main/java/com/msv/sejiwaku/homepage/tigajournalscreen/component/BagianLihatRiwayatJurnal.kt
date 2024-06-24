@@ -2,6 +2,7 @@ package com.msv.sejiwaku.homepage.tigajournalscreen.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import com.msv.sejiwaku.R
 
 @Composable
 fun LihatRiwayatJurnal(
+    onClick:()->Unit
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -39,7 +41,8 @@ fun LihatRiwayatJurnal(
             Surface(
                 modifier = Modifier
                     .height(58.dp)
-                    .width(340.dp),
+                    .width(340.dp)
+                    .clickable { onClick() },
                 border = BorderStroke(1.5.dp, Color(
                     red = 0.2f,
                     green = 0.725f,
@@ -92,5 +95,7 @@ fun LihatRiwayatJurnal(
 @Preview
 @Composable
 private fun PreviewOke() {
-    LihatRiwayatJurnal()
+    LihatRiwayatJurnal(
+        onClick = {}
+    )
 }

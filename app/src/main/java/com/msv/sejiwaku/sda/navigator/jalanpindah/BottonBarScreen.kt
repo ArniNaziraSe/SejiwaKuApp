@@ -79,30 +79,7 @@ sealed class BottonBarScreen(
         route = "DetailMusikDua",
         1
     )
-    object JournalScreen1 : BottonBarScreen(
-        route = "JournalScreen1",
-        1
-    )
-    object JournalScreen2 : BottonBarScreen(
-        route = "JournalScreen2",
-        1
-    )
-    object JournalScreen3 : BottonBarScreen(
-        route = "JournalScreen3",
-        1
-    )
-    object Screen4 : BottonBarScreen(
-        route = "Screen4",
-        1
-    )
-    object Screen5 : BottonBarScreen(
-        route = "Screen5",
-        1
-    )
-    object Screen6 : BottonBarScreen(
-        route = "Screen6",
-        1
-    )
+
     // bagian profil
     object Profil : BottonBarScreen(
         route = "Profil",
@@ -141,6 +118,50 @@ sealed class BottonBarScreen(
     )
     object DetailPembayaranPremium : BottonBarScreen(
         "DetailPembayaranPremium",
+        1
+    )
+    object Payment : BottonBarScreen(
+        "Payment",
+        1
+    )
+
+    // bagian journal
+    object JournalScreen1 : BottonBarScreen(
+        route = "JournalScreen1",
+        1
+    )
+    object JournalScreen2 : BottonBarScreen(
+        route = "JournalScreen2",
+        1
+    )
+    object JournalScreen3 : BottonBarScreen(
+        route = "JournalScreen3",
+        1
+    )
+    object Screen4 : BottonBarScreen(
+        route = "Screen4",
+        1
+    )
+    object Screen5 : BottonBarScreen(
+        route = "Screen5",
+        1
+    )
+    object Screen6 : BottonBarScreen(
+        route = "Screen6",
+        1
+    )
+    object JournalMenulis : BottonBarScreen(
+        route = "JournalMenulis",
+        1
+    )
+    object JournalMenggambar : BottonBarScreen(
+        route = "JournalMenggambar",
+        1
+    )
+
+    // appbarhome
+    object Nontifikasi : BottonBarScreen(
+        route = "Nontifikasi",
         1
     )
 

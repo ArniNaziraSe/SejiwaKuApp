@@ -7,20 +7,32 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.payment.component.DetailPay
+import com.msv.sejiwaku.sda.logindata.DataStoreAkunFreedanPremium
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.Tosca
+import kotlinx.coroutines.launch
 
 @Composable
-fun Payment() {
+fun Payment(
+    navController: NavController
+) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    val dataStore = DataStoreAkunFreedanPremium(context)
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -44,7 +56,16 @@ fun Payment() {
         )
         Spacer(modifier = Modifier.weight(1f))  // This spacer will push the button to the bottom
         Button(
-            onClick = { /* TODO: Handle button click */ },
+            onClick = {
+                coroutineScope.launch {
+                    dataStore.saveStatus(true)
+                }
+                navController.navigate(BottonBarScreen.AkunPremium.route){
+                    popUpTo(BottonBarScreen.Payment.route){
+                        inclusive = true
+                    }
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
@@ -61,6 +82,8 @@ fun Payment() {
 @Composable
 private fun paymentPrev() {
     SejiwakuTheme {
-        Payment()
+        Payment(
+            navController = rememberNavController()
+        )
     }
 }

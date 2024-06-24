@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.inJurnal.screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,11 +30,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @Composable
-fun Screen4(modifier: Modifier = Modifier) {
+fun Screen4(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +45,7 @@ fun Screen4(modifier: Modifier = Modifier) {
             .padding(16.dp)
     ) {
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(BottonBarScreen.Screen6.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 30.dp, bottom = 30.dp),
@@ -77,14 +81,16 @@ fun Screen4(modifier: Modifier = Modifier) {
                 JournalOption1(
                     iconId = R.drawable.write_jurnal,
                     title = "Menulis",
-                    description = "Tulis apa yang ingin kamu ..."
+                    description = "Tulis apa yang ingin kamu ...",
+                    onClick = {navController.navigate(BottonBarScreen.JournalMenulis.route)}
                 )
             }
             item {
                 JournalOption1(
                     iconId = R.drawable.gambar_jurnal,
                     title = "Gambar",
-                    description = "Gambar apa yang ingin kamu ..."
+                    description = "Gambar apa yang ingin kamu ...",
+                    onClick = {navController.navigate(BottonBarScreen.JournalMenggambar.route)}
                 )
             }
         }
@@ -106,11 +112,12 @@ fun Screen4(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun JournalOption1(iconId: Int, title: String, description: String) {
+fun JournalOption1(iconId: Int, title: String, description: String,onClick:()->Unit) {
     Card(
         shape = RoundedCornerShape((8.dp)),
         modifier = Modifier
             .padding(8.dp)
+            .clickable { onClick() }
     ) {
         Column(
             modifier = Modifier
@@ -133,6 +140,8 @@ fun JournalOption1(iconId: Int, title: String, description: String) {
 @Composable
 private fun Screen4Preview() {
     SejiwakuTheme {
-        Screen4()
+        Screen4(
+            navController = rememberNavController()
+        )
     }
 }

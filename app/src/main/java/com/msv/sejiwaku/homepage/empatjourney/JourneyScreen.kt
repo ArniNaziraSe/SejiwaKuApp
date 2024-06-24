@@ -41,7 +41,9 @@ data class JourneyData(
 @Composable
 fun JourneyScreen(
     navController: NavController,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onClickJourneySatu:()-> Unit,
+    onClickJourneyDua:()-> Unit
 ) {
     val namafont = inter
     Scaffold(
@@ -100,21 +102,7 @@ fun JourneyScreen(
                     gambar = R.drawable.journey01,
                     judul = "Menerima Diri pt 1",
                     waktu = "Durasi 3 hari",
-                    onClick = {
-                        if (statusUiKeydua.value){
-                            navController.navigate(BottonBarScreen.DetailMenerimaDiriScreenTiga.route){
-                                popUpTo(BottonBarScreen.Journey.route){
-                                    inclusive = true
-                                }
-                            }
-                        } else {
-                            navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route){
-                                popUpTo(BottonBarScreen.Journey.route){
-                                    inclusive = true
-                                }
-                            }
-                        }
-                    }
+                    onClick = onClickJourneySatu
                 )
                 Spacer(modifier = Modifier.size(7.dp))
                 Text(text = "Kamu Pasti Bisa", fontSize = 9.sp, fontWeight = FontWeight.Bold, color = warnaabuabu, modifier = Modifier.padding(start = 5.dp))
@@ -123,21 +111,7 @@ fun JourneyScreen(
                     gambar = R.drawable.journey11,
                     judul = "Kamu Pasti Bisa pt 1",
                     waktu = "Durasi 3 hari",
-                    onClick = {
-                        if (statusUiKey.value){
-                            navController.navigate(BottonBarScreen.DetailKamuPastiBisaTiga.route){
-                                popUpTo(BottonBarScreen.Journey.route){
-                                    inclusive = true
-                                }
-                            }
-                        } else {
-                            navController.navigate(BottonBarScreen.DetailKamuPastiBisaSatu.route){
-                                popUpTo(BottonBarScreen.Journey.route){
-                                    inclusive = true
-                                }
-                            }
-                        }
-                    }
+                    onClick = onClickJourneyDua
                 )
             }
         }

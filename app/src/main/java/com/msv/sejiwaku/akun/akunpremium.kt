@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.akun.componentakun.KontenAkun
 import com.msv.sejiwaku.akun.componentakun.KontenPremium
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.Tosca
 
 @Composable
@@ -49,7 +50,7 @@ fun AkunPremium(navController: NavController) {
             Image(
                 painter = painterResource(id = R.drawable.kembali),
                 contentDescription = "kembali",
-                modifier = Modifier.size(width = 23.dp, height = 50.dp)
+                modifier = Modifier.size(width = 23.dp, height = 50.dp).clickable { navController.popBackStack() }
             )
 
 
@@ -82,7 +83,9 @@ fun AkunPremium(navController: NavController) {
         KontenAkun(
             text = "Farras Syauqi",
             jumlah = "",
-            onClick = {},
+            onClick = {
+                navController.navigate(BottonBarScreen.Profil.route)
+            },
             width = 355,
             height = 65
         )

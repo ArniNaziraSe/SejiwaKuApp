@@ -1,7 +1,9 @@
 package com.msv.sejiwaku.sda.navigator.jalanpindah
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -33,14 +35,20 @@ import com.msv.sejiwaku.homepage.duakonseling.detailscreen.DetailScreenKonseling
 import com.msv.sejiwaku.inJurnal.screen.Screen4
 import com.msv.sejiwaku.inJurnal.screen.Screen5
 import com.msv.sejiwaku.inJurnal.screen.Screen6
+import com.msv.sejiwaku.inJurnal.screen.journalMenggambar
+import com.msv.sejiwaku.inJurnal.screen.journalMenulis
 import com.msv.sejiwaku.inJurnal.screen.journalScreen1
 import com.msv.sejiwaku.inJurnal.screen.journalScreen2
 import com.msv.sejiwaku.inJurnal.screen.journalScreen3
+import com.msv.sejiwaku.notifications.notifikasi
+import com.msv.sejiwaku.payment.Payment
 import com.msv.sejiwaku.pembayaranpremium.detailpembayaran.DetailPembayaran
 import com.msv.sejiwaku.pembayaranpremium.free.FreePembayaran
 import com.msv.sejiwaku.pembayaranpremium.premium.PremiumPembayaran
 import com.msv.sejiwaku.profile.preview.EditProfile
 import com.msv.sejiwaku.profile.preview.Profile
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
 
 @Composable
 fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
@@ -62,9 +70,44 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
             JournalScreen(navController)
         }
         composable(route = BottonBarScreen.Journey.route){
+            val context = LocalContext.current
+            val dataStore = DataStoreJourneyDua(context)
+            val dataStoreDua = DataStoreJourneySatu(context)
+            val statusUiKey = dataStore.getStatusUi.collectAsState(initial = false)
+            val statusUiKeydua = dataStoreDua.getStatusUijourneysatu.collectAsState(initial = false)
             JourneyScreen(
                 navController = navController,
-                onClick = {navController.navigate(Urutan.DETAILHOMESATU)}
+                onClick = {navController.navigate(Urutan.DETAILHOMESATU)},
+                onClickJourneySatu = {
+                    if (statusUiKeydua.value){
+                        navController.navigate(BottonBarScreen.DetailMenerimaDiriScreenTiga.route){
+                            popUpTo(BottonBarScreen.Journey.route){
+                                inclusive = true
+                            }
+                        }
+                    } else {
+                        navController.navigate(BottonBarScreen.DetailMenerimaDiript1.route){
+                            popUpTo(BottonBarScreen.Journey.route){
+                                inclusive = true
+                            }
+                        }
+                    }
+                },
+                onClickJourneyDua = {
+                    if (statusUiKey.value){
+                        navController.navigate(BottonBarScreen.DetailKamuPastiBisaTiga.route){
+                            popUpTo(BottonBarScreen.Journey.route){
+                                inclusive = true
+                            }
+                        }
+                    } else {
+                        navController.navigate(BottonBarScreen.DetailKamuPastiBisaSatu.route){
+                            popUpTo(BottonBarScreen.Journey.route){
+                                inclusive = true
+                            }
+                        }
+                    }
+                }
             )
         }
         composable(route = BottonBarScreen.DetailKonseling.route){
@@ -109,24 +152,7 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.DetailMusikDua.route){
             MusikDua(navController = navController)
         }
-        composable(route = BottonBarScreen.JournalScreen1.route){
-            journalScreen1()
-        }
-        composable(route = BottonBarScreen.JournalScreen2.route){
-            journalScreen2()
-        }
-        composable(route = BottonBarScreen.JournalScreen3.route){
-            journalScreen3()
-        }
-        composable(route = BottonBarScreen.Screen4.route){
-            Screen4()
-        }
-        composable(route = BottonBarScreen.Screen5.route){
-            Screen5()
-        }
-        composable(route = BottonBarScreen.Screen6.route){
-            Screen6()
-        }
+
         // bagian profil
         composable(route = BottonBarScreen.Profil.route){
             Profile(navController)
@@ -161,7 +187,41 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.DetailPembayaranPremium.route){
             DetailPembayaran(navController)
         }
+        composable(route = BottonBarScreen.Payment.route){
+            Payment(navController)
+        }
 
+
+        // bagian journey
+        composable(route = BottonBarScreen.JournalScreen1.route){
+            journalScreen1(navController)
+        }
+        composable(route = BottonBarScreen.JournalScreen2.route){
+            journalScreen2(navController)
+        }
+        composable(route = BottonBarScreen.JournalScreen3.route){
+            journalScreen3(navController)
+        }
+        composable(route = BottonBarScreen.Screen4.route){
+            Screen4(navController)
+        }
+        composable(route = BottonBarScreen.Screen5.route){
+            Screen5()
+        }
+        composable(route = BottonBarScreen.Screen6.route){
+            Screen6(navController)
+        }
+        composable(route = BottonBarScreen.JournalMenulis.route){
+            journalMenulis(navController)
+        }
+        composable(route = BottonBarScreen.JournalMenggambar.route){
+            journalMenggambar(navController)
+        }
+
+        // appbar
+        composable(route = BottonBarScreen.Nontifikasi.route){
+            notifikasi()
+        }
         detailpertama(navController = navController)
     }
 }

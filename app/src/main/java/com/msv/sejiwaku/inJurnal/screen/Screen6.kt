@@ -29,11 +29,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 
 @Composable
-fun Screen6() {
+fun Screen6(
+    navController: NavController
+) {
     Surface {
         Column(
             modifier = Modifier
@@ -50,7 +55,7 @@ fun Screen6() {
             )
             Spacer(modifier = Modifier.height(25.dp))
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(BottonBarScreen.JournalMenulis.route) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(15.dp),
@@ -84,7 +89,7 @@ fun Screen6() {
             }
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(BottonBarScreen.JournalMenggambar.route) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(15.dp),
@@ -133,6 +138,8 @@ fun Screen6() {
 @Composable
 private fun Screen6Preview() {
     SejiwakuTheme {
-        Screen6()
+        Screen6(
+            rememberNavController()
+        )
     }
 }

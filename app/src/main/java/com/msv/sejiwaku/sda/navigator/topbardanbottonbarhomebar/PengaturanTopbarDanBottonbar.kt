@@ -100,7 +100,12 @@ fun BottonBarNavigation(navController: NavHostController = rememberNavController
                             )
                             Text(text = "Sejiwaku", fontFamily = namafont, fontSize = 21.sp, fontWeight = FontWeight.Bold, color = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f))
                             Row {
-                                Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))
+                                Icon(
+                                    tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),
+                                    painter = painterResource(id = R.drawable.nontifikasi),
+                                    contentDescription = null,
+                                    modifier = Modifier.size(23.dp).clickable { navController.navigate(BottonBarScreen.Nontifikasi.route) }
+                                )
                                 Spacer(modifier = Modifier.size(9.dp))
                                 Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp).clickable { navController.navigate(BottonBarScreen.GaleriChat.route) })
                                 Spacer(modifier = Modifier.size(14.dp))

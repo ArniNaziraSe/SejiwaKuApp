@@ -81,7 +81,7 @@ fun DetailPembayaran(
             ButtonSubmit(
                 text = "Bayar Sekarang",
                 onClick = {
-                    // proses
+                    navController.navigate(BottonBarScreen.Payment.route)
                 }
             )
         }
