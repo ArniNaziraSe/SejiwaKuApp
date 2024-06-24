@@ -50,7 +50,7 @@ fun Akunfree(navController: NavController) {
             Image(
                 painter = painterResource(id = R.drawable.kembali),
                 contentDescription = "kembali",
-                modifier = Modifier.size(width = 23.dp, height = 50.dp)
+                modifier = Modifier.size(width = 23.dp, height = 50.dp).clickable { navController.navigate(BottonBarScreen.Home.route) }
             )
 
 
