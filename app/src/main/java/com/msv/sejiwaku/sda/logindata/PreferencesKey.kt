@@ -11,4 +11,5 @@ object PreferencesKey {
     val STATUS_UI_KEY_JOURNEYDUA = booleanPreferencesKey("status_journey_dua")
     val STATUS_UI_KEY_JOURNEYSATU = booleanPreferencesKey("status_journey_dua")
     val STATUS_UI_KEY_LOGIN = booleanPreferencesKey("status_login")
+    val STATUS_UI_KEY_FREEDANLOGIN = booleanPreferencesKey("status_freedanlogin")
 }

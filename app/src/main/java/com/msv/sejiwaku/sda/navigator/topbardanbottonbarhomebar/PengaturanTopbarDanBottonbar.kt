@@ -19,10 +19,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -34,6 +36,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
+import com.msv.sejiwaku.sda.logindata.DataStoreAkunFreedanPremium
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
+import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.sda.navigator.jalanpindah.HomeNavigasi
 import com.msv.sejiwaku.sda.navigator.topbardanbottonbarhomebar.visibilitytopbardanbottonbar.shouldShowBottomBar
@@ -47,6 +52,9 @@ fun BottonBarNavigation(navController: NavHostController = rememberNavController
     // Fungsi untuk menghilangkan topbar dan buttonbar diambil dari file Helper
     val navBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStack?.destination?.route
+    val context = LocalContext.current
+    val dataStoreakunfreedanpremiun = DataStoreAkunFreedanPremium(context)
+    val statusUiKeytiga = dataStoreakunfreedanpremiun.getStatusUifreedanpremium.collectAsState(initial = false)
 //
 //    AnimatedVisibility(
 //        visible = currentRoute.shouldShowBottomBar(),
@@ -67,7 +75,29 @@ fun BottonBarNavigation(navController: NavHostController = rememberNavController
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f), painter = painterResource(id = R.drawable.userprofile), contentDescription = null, modifier = Modifier.size(23.dp))
+                            Icon(
+                                tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),
+                                painter = painterResource(id = R.drawable.userprofile),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(23.dp)
+                                    .clickable {
+                                        if (statusUiKeytiga.value){
+                                            navController.navigate(BottonBarScreen.AkunPremium.route){
+                                                popUpTo(BottonBarScreen.Journey.route){
+                                                    inclusive = true
+                                                }
+                                            }
+                                        } else {
+                                            navController.navigate(BottonBarScreen.AkunFree.route){
+                                                popUpTo(BottonBarScreen.Journey.route){
+                                                    inclusive = true
+                                                }
+                                            }
+                                        }
+
+                                    }
+                            )
                             Text(text = "Sejiwaku", fontFamily = namafont, fontSize = 21.sp, fontWeight = FontWeight.Bold, color = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f))
                             Row {
                                 Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))

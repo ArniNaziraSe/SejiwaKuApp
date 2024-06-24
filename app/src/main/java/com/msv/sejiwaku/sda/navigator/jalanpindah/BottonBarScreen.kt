@@ -121,5 +121,28 @@ sealed class BottonBarScreen(
         "DetailChat",
         1
     )
+    // bagian akun
+    object AkunFree : BottonBarScreen(
+        "AkunFree",
+        1
+    )
+    object AkunPremium : BottonBarScreen(
+        "AkunPremium",
+        1
+    )
+    // bagian pembayaran
+    object PembayaranFree : BottonBarScreen(
+        "PembayaranFree",
+        1
+    )
+    object PembayaranPremium : BottonBarScreen(
+        "PembayaranPremium",
+        1
+    )
+    object DetailPembayaranPremium : BottonBarScreen(
+        "DetailPembayaranPremium",
+        1
+    )
+
 }
 

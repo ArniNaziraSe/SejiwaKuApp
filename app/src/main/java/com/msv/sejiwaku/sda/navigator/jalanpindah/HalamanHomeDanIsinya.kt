@@ -6,7 +6,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.msv.sejiwaku.akun.AkunPremium
+import com.msv.sejiwaku.akun.Akunfree
 import com.msv.sejiwaku.chat.free.GaleriChat
 import com.msv.sejiwaku.chat.free.detail.DetailChat
 import com.msv.sejiwaku.homepage.satuhomescreen.HomeScreen
@@ -33,6 +36,9 @@ import com.msv.sejiwaku.inJurnal.screen.Screen6
 import com.msv.sejiwaku.inJurnal.screen.journalScreen1
 import com.msv.sejiwaku.inJurnal.screen.journalScreen2
 import com.msv.sejiwaku.inJurnal.screen.journalScreen3
+import com.msv.sejiwaku.pembayaranpremium.detailpembayaran.DetailPembayaran
+import com.msv.sejiwaku.pembayaranpremium.free.FreePembayaran
+import com.msv.sejiwaku.pembayaranpremium.premium.PremiumPembayaran
 import com.msv.sejiwaku.profile.preview.EditProfile
 import com.msv.sejiwaku.profile.preview.Profile
 
@@ -128,6 +134,7 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.ProfilEdit.route){
             EditProfile(navController)
         }
+        
         // bagian chat
         composable(route = BottonBarScreen.GaleriChat.route){
             GaleriChat(navController)
@@ -135,6 +142,26 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.DetailChat.route){
             DetailChat(navController)
         }
+        
+        // bagian akun
+        composable(route = BottonBarScreen.AkunFree.route){
+            Akunfree(navController = navController)
+        }
+        composable(route = BottonBarScreen.AkunPremium.route){
+            AkunPremium(navController = navController)
+        }
+
+        // bagian pembayaran
+        composable(route = BottonBarScreen.PembayaranFree.route){
+            FreePembayaran(navController)
+        }
+        composable(route = BottonBarScreen.PembayaranPremium.route){
+            PremiumPembayaran(navController)
+        }
+        composable(route = BottonBarScreen.DetailPembayaranPremium.route){
+            DetailPembayaran(navController)
+        }
+
         detailpertama(navController = navController)
     }
 }

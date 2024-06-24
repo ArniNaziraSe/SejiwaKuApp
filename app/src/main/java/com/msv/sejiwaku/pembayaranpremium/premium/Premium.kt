@@ -9,17 +9,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.pembayaranpremium.component.ButtonPembayaran
 import com.msv.sejiwaku.pembayaranpremium.component.DaftarFilturDidapatP
 import com.msv.sejiwaku.pembayaranpremium.component.HeaderPembayaran
 import com.msv.sejiwaku.pembayaranpremium.component.PerpindahanPembayaran
 import com.msv.sejiwaku.pembayaranpremium.component.TeksPembayaran
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.abu_abu_muda
 
 @Composable
-fun PremiumPembayaran() {
+fun PremiumPembayaran(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -28,7 +33,13 @@ fun PremiumPembayaran() {
         }
         Spacer(modifier = Modifier.size(20.dp))
         PerpindahanPembayaran(
-            onClicksatu = { /*TODO*/ },
+            onClicksatu = {
+                navController.navigate(BottonBarScreen.PembayaranFree.route) {
+                    popUpTo(BottonBarScreen.PembayaranPremium.route) {
+                        inclusive = true
+                    }
+                }
+            },
             onClickdua = { /*TODO*/ },
             colorsatu = abu_abu_muda,
             colordua = Color.White
@@ -39,7 +50,11 @@ fun PremiumPembayaran() {
         DaftarFilturDidapatP()
         Spacer(modifier = Modifier.size(327.dp))
         ButtonPembayaran(text = "Lanjut Rp. 69.000,-") {
-            
+            navController.navigate(BottonBarScreen.DetailPembayaranPremium.route) {
+                popUpTo(BottonBarScreen.PembayaranPremium.route) {
+                    inclusive = true
+                }
+            }
         }
     }
 }
@@ -48,6 +63,8 @@ fun PremiumPembayaran() {
 @Composable
 private fun PreviewPremiumPembayaran() {
     SejiwakuTheme {
-        PremiumPembayaran()
+        PremiumPembayaran(
+            navController = rememberNavController()
+        )
     }
 }

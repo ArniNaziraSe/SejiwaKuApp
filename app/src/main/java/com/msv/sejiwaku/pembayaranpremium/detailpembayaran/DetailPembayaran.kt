@@ -21,22 +21,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.pembayaranpremium.component.ButtonSubmit
 import com.msv.sejiwaku.pembayaranpremium.component.GrupRadio
 import com.msv.sejiwaku.pembayaranpremium.component.HeaderPembayaran
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.Poppins
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
 
 @Composable
-fun DetailPembayaran() {
+fun DetailPembayaran(
+    navController: NavController
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
         var opsiTerpilih by remember { mutableStateOf("Opsi 1") }
         HeaderPembayaran(judul = "Detail Pembayaran") {
-
+            navController.navigate(BottonBarScreen.PembayaranPremium.route)
         }
         Column(
             modifier = Modifier.padding(start = 20.dp)
@@ -74,8 +79,10 @@ fun DetailPembayaran() {
                 Text(text = "Rp. 69.000", fontFamily = Poppins, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
             ButtonSubmit(
-                text = "Example",
-                onClick = {}
+                text = "Bayar Sekarang",
+                onClick = {
+                    // proses
+                }
             )
         }
     }
@@ -85,6 +92,8 @@ fun DetailPembayaran() {
 @Composable
 private fun PreviewDetailPembayaran() {
     SejiwakuTheme {
-        DetailPembayaran()
+        DetailPembayaran(
+            navController = rememberNavController()
+        )
     }
 }

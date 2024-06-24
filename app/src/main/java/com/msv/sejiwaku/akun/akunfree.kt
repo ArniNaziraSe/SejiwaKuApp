@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.akun.componentakun.KontenAkun
 import com.msv.sejiwaku.akun.componentakun.KontenPremium
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.Tosca
 
 @Composable
@@ -76,7 +77,13 @@ fun Akunfree(navController: NavController) {
         KontenPremium(
             text = "Farras Syauqi",
             jumlah = "",
-            onClick = {},
+            onClick = {
+                navController.navigate(BottonBarScreen.PembayaranFree.route){
+                    popUpTo(BottonBarScreen.AkunFree.route){
+                        inclusive = true
+                    }
+                }
+            },
             width = 355,
             height = 92
         )
@@ -87,7 +94,9 @@ fun Akunfree(navController: NavController) {
         KontenAkun(
         text = "Farras Syauqi",
         jumlah = "",
-        onClick = {},
+        onClick = {
+            navController.navigate(BottonBarScreen.Profil.route)
+        },
         width = 355,
         height = 65
     )
