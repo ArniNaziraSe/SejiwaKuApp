@@ -1,4 +1,4 @@
-package com.msv.sejiwaku.pembayaranpremium.free
+package com.msv.sejiwaku.pembayaranpremium.premium
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.pembayaranpremium.component.ButtonPembayaran
-import com.msv.sejiwaku.pembayaranpremium.component.DaftarFilturDidapat
+import com.msv.sejiwaku.pembayaranpremium.component.DaftarFilturDidapatP
 import com.msv.sejiwaku.pembayaranpremium.component.HeaderPembayaran
 import com.msv.sejiwaku.pembayaranpremium.component.PerpindahanPembayaran
 import com.msv.sejiwaku.pembayaranpremium.component.TeksPembayaran
@@ -19,7 +19,7 @@ import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.abu_abu_muda
 
 @Composable
-fun FreePembayaran() {
+fun PremiumPembayaran() {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -30,15 +30,15 @@ fun FreePembayaran() {
         PerpindahanPembayaran(
             onClicksatu = { /*TODO*/ },
             onClickdua = { /*TODO*/ },
-            colorsatu = Color.White,
-            colordua = abu_abu_muda
+            colorsatu = abu_abu_muda,
+            colordua = Color.White
         )
         Spacer(modifier = Modifier.size(27.dp))
-        TeksPembayaran(text = "Free", painter = R.drawable.bintang, tint = Color.Yellow)
+        TeksPembayaran(text = "Premium", painter = R.drawable.dolarpremium)
         Spacer(modifier = Modifier.size(27.dp))
-        DaftarFilturDidapat()
+        DaftarFilturDidapatP()
         Spacer(modifier = Modifier.size(327.dp))
-        ButtonPembayaran(text = "Lanjut Rp. 0,-") {
+        ButtonPembayaran(text = "Lanjut Rp. 69.000,-") {
             
         }
     }
@@ -46,8 +46,8 @@ fun FreePembayaran() {
 
 @Preview(showBackground = true)
 @Composable
-private fun PreviewFreePembayaran() {
+private fun PreviewPremiumPembayaran() {
     SejiwakuTheme {
-        FreePembayaran()
+        PremiumPembayaran()
     }
 }

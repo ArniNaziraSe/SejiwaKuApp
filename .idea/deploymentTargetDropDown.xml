@@ -2,19 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PreviewDetailChat">
+      <entry key="PreviewButtonSubmit">
         <State />
       </entry>
-      <entry key="PreviewFooterChat">
+      <entry key="PreviewDetailPembayaran">
         <State />
       </entry>
       <entry key="PreviewFreePembayaran">
         <State />
       </entry>
-      <entry key="PreviewGaleriChat">
+      <entry key="PreviewPremiumPembayaran">
         <State />
       </entry>
-      <entry key="PreviewHeaderChat">
+      <entry key="PreviewSelectPembayaran">
         <State />
       </entry>
       <entry key="app">
