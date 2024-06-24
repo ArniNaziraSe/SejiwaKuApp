@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,12 +30,18 @@ import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.akun.componentakun.KontenAkun
 import com.msv.sejiwaku.akun.componentakun.KontenPremium
+import com.msv.sejiwaku.sda.logindata.DataStoreLogin
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.ui.theme.Tosca
+import com.msv.sejiwaku.ui.theme.inter
+import kotlinx.coroutines.launch
 
 @Composable
 fun Akunfree(navController: NavController) {
-
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val dataStore = DataStoreLogin(context)
     Column(
         modifier = Modifier.fillMaxSize()
     ){}
@@ -50,7 +58,9 @@ fun Akunfree(navController: NavController) {
             Image(
                 painter = painterResource(id = R.drawable.kembali),
                 contentDescription = "kembali",
-                modifier = Modifier.size(width = 23.dp, height = 50.dp).clickable { navController.navigate(BottonBarScreen.Home.route) }
+                modifier = Modifier
+                    .size(width = 23.dp, height = 50.dp)
+                    .clickable { navController.navigate(BottonBarScreen.Home.route) }
             )
 
 
@@ -99,7 +109,30 @@ fun Akunfree(navController: NavController) {
         },
         width = 355,
         height = 65
-    )
+        )
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(end = 19.dp, top = 3.dp),
+            horizontalAlignment = Alignment.End
+        ) {
+            Text(
+                text = "Log Out",
+                fontWeight = FontWeight.Bold,
+                fontSize = 12.sp,
+                fontFamily = inter,
+                color = Tosca,
+                modifier = Modifier
+                    .clickable {
+                        coroutineScope.launch {
+                            dataStore.clearStatus()
+                        }
+                        navController.navigate(Urutan.BAGIANLOGINDANTEMANNYA) {
+                            popUpTo(BottonBarScreen.Home.route) {
+                                inclusive = true
+                            }
+                        }
+                    }
+            )
+        }
     }
 }
 

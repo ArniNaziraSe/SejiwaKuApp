@@ -11,29 +11,43 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.akun.componentakun.KontenAkun
 import com.msv.sejiwaku.akun.componentakun.KontenPremium
+import com.msv.sejiwaku.sda.logindata.DataStoreLogin
+import com.msv.sejiwaku.sda.mvvm.alert.MainViewModel
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.ui.theme.Tosca
+import com.msv.sejiwaku.ui.theme.inter
+import kotlinx.coroutines.launch
 
 @Composable
 fun AkunPremium(navController: NavController) {
-
+    val viewModel: MainViewModel = viewModel()
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val dataStore = DataStoreLogin(context)
     Column(
         modifier = Modifier.fillMaxSize()
     ) {}
@@ -50,7 +64,9 @@ fun AkunPremium(navController: NavController) {
             Image(
                 painter = painterResource(id = R.drawable.kembali),
                 contentDescription = "kembali",
-                modifier = Modifier.size(width = 23.dp, height = 50.dp).clickable { navController.popBackStack() }
+                modifier = Modifier
+                    .size(width = 23.dp, height = 50.dp)
+                    .clickable { navController.popBackStack() }
             )
 
 
@@ -89,6 +105,53 @@ fun AkunPremium(navController: NavController) {
             width = 355,
             height = 65
         )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 19.dp, top = 3.dp),
+            horizontalAlignment = Alignment.End
+        ) {
+            Text(
+                text = "Log Out",
+                fontWeight = FontWeight.Bold,
+                fontSize = 12.sp,
+                fontFamily = inter,
+                color = Tosca,
+                modifier = Modifier
+                    .clickable {
+                        viewModel.showAlert()
+                        coroutineScope.launch {
+                            dataStore.clearStatus()
+                        }
+                    }
+            )
+        }
+        if (viewModel.showDialog.value) {
+            AlertDialog(
+                onDismissRequest = { viewModel.dismissAlert() },
+                title = {
+                    Text(text = "Peringatan")
+                },
+                text = {
+                    Text(text = "Aplikasi akan ditutup saat menekan oke")
+                },
+                confirmButton = {
+                    Button(
+                        colors = ButtonDefaults.buttonColors(containerColor = Tosca),
+                        onClick = {
+                            viewModel.dismissAlert()
+                            navController.navigate(Urutan.BAGIANLOGINDANTEMANNYA) {
+                                popUpTo(BottonBarScreen.AkunPremium.route) {
+                                    inclusive = true
+                                }
+                            }
+                        }
+                    ) {
+                        Text("OK")
+                    }
+                }
+            )
+        }
     }
 }
 
