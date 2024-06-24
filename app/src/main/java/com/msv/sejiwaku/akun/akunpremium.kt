@@ -137,7 +137,7 @@ fun AkunPremium(navController: NavController) {
                     Text(text = "Peringatan")
                 },
                 text = {
-                    Text(text = "Aplikasi akan ditutup saat menekan oke")
+                    Text(text = "Aplikasi akan ditutup saat menekan 'OK'")
                 },
                 confirmButton = {
                     Button(
