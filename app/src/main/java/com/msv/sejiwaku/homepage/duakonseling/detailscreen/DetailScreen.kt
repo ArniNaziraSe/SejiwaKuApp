@@ -33,7 +33,7 @@ import com.msv.sejiwaku.homepage.duakonseling.component.Bintang
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.Garis
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.Komentar
 import com.msv.sejiwaku.homepage.duakonseling.detailscreen.component.LazyMaps
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.ui.theme.inter
 import com.msv.sejiwaku.ui.theme.toska
 
@@ -75,7 +75,9 @@ fun DetailScreenKonseling(
                 Text(text = "Rudmi Rayan, M.Psi", fontFamily = inter, fontWeight = FontWeight.Bold)
                 Bintang(rating = 4.0)
                 Button(
-                    onClick = {},
+                    onClick = {
+                              navController.navigate(BottonBarScreen.GaleriChat.route)
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = toska),
                     shape = RoundedCornerShape(8.dp),

@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.duakonseling.component.ColumnKonselingPertama
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
-import com.msv.sejiwaku.sda.navigator.Urutan
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.ui.theme.inter
 
 @OptIn(ExperimentalMaterial3Api::class)

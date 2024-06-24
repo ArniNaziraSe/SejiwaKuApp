@@ -2,7 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="PreviewButtonSubmit">
+        <State />
+      </entry>
       <entry key="PreviewDetailPembayaran">
+        <State />
+      </entry>
+      <entry key="PreviewFreePembayaran">
+        <State />
+      </entry>
+      <entry key="PreviewPremiumPembayaran">
+        <State />
+      </entry>
+      <entry key="PreviewSelectPembayaran">
         <State />
       </entry>
       <entry key="app">

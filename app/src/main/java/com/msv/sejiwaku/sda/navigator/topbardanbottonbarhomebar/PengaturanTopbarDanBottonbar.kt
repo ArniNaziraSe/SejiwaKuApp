@@ -1,6 +1,7 @@
 package com.msv.sejiwaku.sda.navigator.topbardanbottonbarhomebar
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -33,8 +34,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
-import com.msv.sejiwaku.sda.navigator.HomeNavigasi
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.HomeNavigasi
 import com.msv.sejiwaku.sda.navigator.topbardanbottonbarhomebar.visibilitytopbardanbottonbar.shouldShowBottomBar
 import com.msv.sejiwaku.ui.theme.inter
 
@@ -71,7 +72,7 @@ fun BottonBarNavigation(navController: NavHostController = rememberNavController
                             Row {
                                 Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.nontifikasi), contentDescription = null, modifier = Modifier.size(23.dp))
                                 Spacer(modifier = Modifier.size(9.dp))
-                                Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp))
+                                Icon(tint = Color(red = 0.2f, green = 0.725f, blue = 0.675f, alpha = 1.0f),painter = painterResource(id = R.drawable.perpesanan), contentDescription = null, modifier = Modifier.size(23.dp).clickable { navController.navigate(BottonBarScreen.GaleriChat.route) })
                                 Spacer(modifier = Modifier.size(14.dp))
                             }
                         }

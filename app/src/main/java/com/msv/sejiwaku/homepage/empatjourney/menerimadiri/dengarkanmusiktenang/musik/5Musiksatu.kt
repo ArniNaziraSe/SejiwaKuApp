@@ -28,9 +28,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
 import com.msv.sejiwaku.homepage.empatjourney.menerimadiri.component.WaktuTimerDalam
-import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
-import com.msv.sejiwaku.sda.navigator.BottonBarScreen
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import kotlinx.coroutines.launch
 
 @Composable

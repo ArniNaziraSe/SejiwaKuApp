@@ -1,4 +1,4 @@
-package com.msv.sejiwaku.sda.navigator
+package com.msv.sejiwaku.sda.navigator.jalanpindah
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.sp
 import com.msv.sejiwaku.R
 
 @Composable
-fun profilHomeItem(name: String, status: String) {
-    Row(modifier = Modifier.fillMaxWidth().padding(25.dp).clickable { /**/ }, verticalAlignment = Alignment.CenterVertically) {
+fun profilHomeItem(name: String, status: String,onClick:()->Unit) {
+    Row(modifier = Modifier.fillMaxWidth().padding(25.dp).clickable { onClick() }, verticalAlignment = Alignment.CenterVertically) {
         Image(
             painter = painterResource(id = R.drawable.albert), 
             contentDescription = null,

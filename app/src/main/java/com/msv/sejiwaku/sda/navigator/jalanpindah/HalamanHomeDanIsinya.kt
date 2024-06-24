@@ -1,4 +1,4 @@
-package com.msv.sejiwaku.sda.navigator
+package com.msv.sejiwaku.sda.navigator.jalanpindah
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.msv.sejiwaku.chat.free.GaleriChat
+import com.msv.sejiwaku.chat.free.detail.DetailChat
 import com.msv.sejiwaku.homepage.satuhomescreen.HomeScreen
 import com.msv.sejiwaku.homepage.tigajournalscreen.JournalScreen
 import com.msv.sejiwaku.homepage.empatjourney.JourneyScreen
@@ -31,6 +33,8 @@ import com.msv.sejiwaku.inJurnal.screen.Screen6
 import com.msv.sejiwaku.inJurnal.screen.journalScreen1
 import com.msv.sejiwaku.inJurnal.screen.journalScreen2
 import com.msv.sejiwaku.inJurnal.screen.journalScreen3
+import com.msv.sejiwaku.profile.preview.EditProfile
+import com.msv.sejiwaku.profile.preview.Profile
 
 @Composable
 fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
@@ -40,7 +44,7 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         startDestination = BottonBarScreen.Home.route
     ) {
         composable(route = BottonBarScreen.Home.route){
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(route = BottonBarScreen.Konseling.route){
             KonselingScreen(
@@ -117,7 +121,20 @@ fun HomeNavigasi(navController: NavHostController,modifier: Modifier) {
         composable(route = BottonBarScreen.Screen6.route){
             Screen6()
         }
-
+        // bagian profil
+        composable(route = BottonBarScreen.Profil.route){
+            Profile(navController)
+        }
+        composable(route = BottonBarScreen.ProfilEdit.route){
+            EditProfile(navController)
+        }
+        // bagian chat
+        composable(route = BottonBarScreen.GaleriChat.route){
+            GaleriChat(navController)
+        }
+        composable(route = BottonBarScreen.DetailChat.route){
+            DetailChat(navController)
+        }
         detailpertama(navController = navController)
     }
 }

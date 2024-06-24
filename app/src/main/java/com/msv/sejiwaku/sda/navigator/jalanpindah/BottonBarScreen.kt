@@ -1,7 +1,5 @@
-package com.msv.sejiwaku.sda.navigator
+package com.msv.sejiwaku.sda.navigator.jalanpindah
 
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import com.msv.sejiwaku.R
 
 sealed class BottonBarScreen(
@@ -105,6 +103,23 @@ sealed class BottonBarScreen(
         route = "Screen6",
         1
     )
-
+    // bagian profil
+    object Profil : BottonBarScreen(
+        route = "Profil",
+        1
+    )
+    object ProfilEdit : BottonBarScreen(
+        "ProfilEdit",
+        1
+    )
+    // bagian chat
+    object GaleriChat : BottonBarScreen(
+        "GaleriChat",
+        1
+    )
+    object DetailChat : BottonBarScreen(
+        "DetailChat",
+        1
+    )
 }
 

@@ -26,10 +26,19 @@ val toska = Color(
 )
 
 val fontName = GoogleFont("Inter")
+val fontNamedua = GoogleFont("Mulish")
+val fontNametiga = GoogleFont("Poppins")
 
 val inter = FontFamily(
     Font(googleFont = fontName, fontProvider = provider)
 )
+val Mulish = FontFamily(
+    Font(googleFont = fontNamedua, fontProvider = provider)
+)
+val Poppins = FontFamily(
+    Font(googleFont = fontNametiga, fontProvider = provider)
+)
+
 
 // Set of Material typography styles to start with
 val Typography = Typography(

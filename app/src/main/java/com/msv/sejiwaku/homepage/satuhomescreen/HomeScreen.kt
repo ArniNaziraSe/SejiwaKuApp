@@ -25,15 +25,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.homepage.satuhomescreen.component.aktivitasHomeItem
 import com.msv.sejiwaku.homepage.satuhomescreen.component.emojiHomeItem
 import com.msv.sejiwaku.homepage.satuhomescreen.component.journeyHomeItem
 import com.msv.sejiwaku.homepage.satuhomescreen.component.journeys
 import com.msv.sejiwaku.homepage.satuhomescreen.component.profilHomeItem
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
+import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 
 @Composable
 fun HomeScreen(
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     Surface(color = MaterialTheme.colorScheme.background) {
@@ -44,7 +48,10 @@ fun HomeScreen(
             Spacer(modifier = Modifier.size(40.dp))
             profilHomeItem(
                 name = "Farras",
-                status = "Apa kabarmu hari ini?"
+                status = "Apa kabarmu hari ini?",
+                onClick = {
+                    navController.navigate(BottonBarScreen.Profil.route)
+                }
             )
             Divider(
                 color = Color(0xFF33B9AC),
@@ -105,6 +112,6 @@ fun SectionTitle(title: String) {
 @Composable
 private fun homepreview() {
     SejiwakuTheme {
-        HomeScreen()
+        HomeScreen(navController = rememberNavController())
     }
 }
