@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -29,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.msv.sejiwaku.R
@@ -38,6 +40,7 @@ import com.msv.sejiwaku.loginpage.component.TeksInputPasswordLogin
 import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BagianLoginDanTemannya
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
+import com.msv.sejiwaku.sda.mvvm.login.AuthViewModel
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
 import kotlinx.coroutines.launch
@@ -46,6 +49,8 @@ import kotlinx.coroutines.launch
 fun RegisterPage(
     navController: NavController
 ) {
+    val viewModel: AuthViewModel = viewModel()
+    val authState = viewModel.authState.observeAsState()
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val sharedPreferencesManager = remember {
@@ -59,13 +64,13 @@ fun RegisterPage(
         var namalengkapregister by remember {
             mutableStateOf("")
         }
-        var emailregister by remember {
+        var email by remember {
             mutableStateOf("")
         }
-        var passwordregister1 by rememberSaveable {
+        var password by rememberSaveable {
             mutableStateOf("")
         }
-        var passwordregister2 by rememberSaveable {
+        var passwordverifikas by rememberSaveable {
             mutableStateOf("")
         }
 
@@ -103,25 +108,26 @@ fun RegisterPage(
         ) {
             Text(text = "Register",fontFamily = inter, fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputBiasaLogin(judul = namalengkapregister, placeholder = "Samantha", value = "NAMA LENGKAP") {
+            TeksInputBiasaLogin(judul = "NAMA LENGKAP", placeholder = "Samantha", value = namalengkapregister) {
                 namalengkapregister = it
             }
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputBiasaLogin(judul = emailregister, placeholder = "smantha@mail.com", value = "EMAIL") {
-                emailregister = it
+            TeksInputBiasaLogin(judul = "EMAIL", placeholder = "smantha@mail.com", value = email) {
+                email = it
             }
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputPasswordLogin(judul = "KATA SANDI", value = passwordregister1) {
-                passwordregister1 = it
+            TeksInputPasswordLogin(judul = "KATA SANDI", value = password) {
+                password = it
             }
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputPasswordLogin(judul = "KONFIRMASI KATA SANDI", value = passwordregister2) {
-                passwordregister2 = it
+            TeksInputPasswordLogin(judul = "KONFIRMASI KATA SANDI", value = passwordverifikas) {
+                passwordverifikas = it
             }
             ButtonRegister {
-                if (namalengkapregister.isBlank()){
+                if (namalengkapregister.isBlank()||email.isBlank()||password.isBlank()){
                     Toast.makeText(context, "Harus Diisi", Toast.LENGTH_SHORT).show()
                 } else {
+                    viewModel.signup(email,password)
                     sharedPreferencesManager.namalengkapregister = namalengkapregister
                     coroutineScope.launch {
                         dataStore.saveStatus(true)

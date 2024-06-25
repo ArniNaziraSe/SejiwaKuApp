@@ -39,6 +39,7 @@ import com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua
 import com.msv.sejiwaku.sda.logindata.DataStoreJourneySatu
 import com.msv.sejiwaku.sda.logindata.DataStoreLogin
 import com.msv.sejiwaku.sda.mvvm.alert.MainViewModel
+import com.msv.sejiwaku.sda.mvvm.login.AuthViewModel
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BottonBarScreen
 import com.msv.sejiwaku.sda.navigator.jalanpindah.Urutan
 import com.msv.sejiwaku.ui.theme.Tosca
@@ -51,6 +52,7 @@ fun Akunfree(navController: NavController) {
     val context = LocalContext.current
     val dataStore = DataStoreLogin(context)
     val viewModel: MainViewModel = viewModel()
+    val viewModellogin: AuthViewModel = viewModel()
     val dataStorejournye = DataStoreJourneySatu(context)
     val dataStorejournyee = DataStoreJourneyDua(context)
     val dataStorefreedanpremium = DataStoreAkunFreedanPremium(context)
@@ -137,6 +139,18 @@ fun Akunfree(navController: NavController) {
                 modifier = Modifier
                     .clickable {
                         viewModel.showAlert()
+                        coroutineScope.launch {
+                            dataStore.clearStatus()
+                        }
+                        coroutineScope.launch {
+                            dataStorejournye.clearStatus()
+                        }
+                        coroutineScope.launch {
+                            dataStorejournyee.clearStatus()
+                        }
+                        coroutineScope.launch {
+                            dataStorefreedanpremium.clearStatus()
+                        }
 
                     }
             )
@@ -154,19 +168,8 @@ fun Akunfree(navController: NavController) {
                     Button(
                         colors = ButtonDefaults.buttonColors(containerColor = Tosca),
                         onClick = {
+                            viewModellogin
                             viewModel.dismissAlert()
-                            coroutineScope.launch {
-                                dataStore.clearStatus()
-                            }
-                            coroutineScope.launch {
-                                dataStorejournye.clearStatus()
-                            }
-                            coroutineScope.launch {
-                                dataStorejournyee.clearStatus()
-                            }
-                            coroutineScope.launch {
-                                dataStorefreedanpremium.clearStatus()
-                            }
                             navController.navigate(Urutan.BAGIANLOGINDANTEMANNYA) {
                                 popUpTo(BottonBarScreen.AkunPremium.route) {
                                     inclusive = true

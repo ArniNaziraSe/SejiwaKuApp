@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -37,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.Firebase
@@ -46,6 +48,8 @@ import com.msv.sejiwaku.R
 import com.msv.sejiwaku.loginpage.component.TeksInputBiasaLogin
 import com.msv.sejiwaku.loginpage.component.TeksInputPasswordLogin
 import com.msv.sejiwaku.sda.logindata.SharedPreferencesManager
+import com.msv.sejiwaku.sda.mvvm.alert.MainViewModel
+import com.msv.sejiwaku.sda.mvvm.login.AuthViewModel
 import com.msv.sejiwaku.sda.navigator.jalanpindah.BagianLoginDanTemannya
 import com.msv.sejiwaku.ui.theme.SejiwakuTheme
 import com.msv.sejiwaku.ui.theme.inter
@@ -70,6 +74,8 @@ fun LoginPage(
 
     ) {
         // ini untuk datastore
+        val viewModel: AuthViewModel = viewModel()
+        val authState = viewModel.authState.observeAsState()
         val context = LocalContext.current
         val coroutineScope = rememberCoroutineScope()
         val sharedPreferencesManager = remember {
@@ -78,10 +84,10 @@ fun LoginPage(
         val dataStore = com.msv.sejiwaku.sda.logindata.DataStoreJourneyDua(context)
 
         val namafont = inter
-        var emaillogin by remember {
+        var email by remember {
             mutableStateOf("")
         }
-        var passwordlogin by rememberSaveable {
+        var password by rememberSaveable {
             mutableStateOf("")
         }
 
@@ -105,12 +111,12 @@ fun LoginPage(
         ) {
             Text(text = "Log In", fontSize = 24.sp, fontFamily = namafont, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 39.dp))
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputBiasaLogin(judul = "EMAIL", placeholder = "", value = emaillogin) {
-                emaillogin = it
+            TeksInputBiasaLogin(judul = "EMAIL", placeholder = "", value = email) {
+                email = it
             }
             Spacer(modifier = Modifier.size(26.dp))
-            TeksInputPasswordLogin(judul = "KATA SANDI", value = passwordlogin) {
-                passwordlogin = it
+            TeksInputPasswordLogin(judul = "KATA SANDI", value = password) {
+                password = it
             }
         }
         Column(
@@ -137,11 +143,12 @@ fun LoginPage(
             Button(
                 modifier = Modifier.size(height = 54.dp, width = 295.dp),
                 onClick = {
-                    if (emaillogin.isBlank() || passwordlogin.isBlank()){
+                    if (email.isBlank() || password.isBlank()){
                         Toast.makeText(context, "Email dan Password Harus Diisi", Toast.LENGTH_SHORT).show()
                     } else {
-                        sharedPreferencesManager.emaillogin = emaillogin
-                        sharedPreferencesManager.passwordlogin = passwordlogin
+                        viewModel.login(email, password)
+                        sharedPreferencesManager.emaillogin = email
+                        sharedPreferencesManager.passwordlogin = password
                         navController.navigate(BagianLoginDanTemannya.OnboardingPertama.route) {
                             popUpTo(BagianLoginDanTemannya.Login.route) {
                                 inclusive = true
